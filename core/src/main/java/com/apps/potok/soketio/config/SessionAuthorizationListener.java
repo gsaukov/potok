@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.session.Session;
-import org.springframework.session.data.redis.RedisOperationsSessionRepository;
+import org.springframework.session.data.redis.RedisSessionRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.Base64;
@@ -19,7 +19,7 @@ public class SessionAuthorizationListener implements AuthorizationListener {
     private boolean testModeAuthentication;
 
     @Autowired
-    private RedisOperationsSessionRepository sessionRepository;
+    private RedisSessionRepository sessionRepository;
 
     @Override
     public boolean isAuthorized(HandshakeData data) {

@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
-import org.springframework.session.data.redis.RedisOperationsSessionRepository;
+import org.springframework.session.data.redis.RedisSessionRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,7 +29,7 @@ public class SessionConnectListener implements ConnectListener {
     private boolean testModeAuthentication;
 
     @Autowired
-    private RedisOperationsSessionRepository sessionRepository;
+    private RedisSessionRepository sessionRepository;
 
     @Autowired
     private SymbolContainer symbolContainer;

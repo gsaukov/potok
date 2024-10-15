@@ -16,7 +16,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;

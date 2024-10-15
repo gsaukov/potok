@@ -8,7 +8,7 @@ import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.session.config.annotation.web.http.EnableSpringHttpSession;
-import org.springframework.session.data.redis.RedisOperationsSessionRepository;
+import org.springframework.session.data.redis.RedisSessionRepository;
 
 //@EnableSpringHttpSession
 @Configuration
@@ -30,8 +30,8 @@ public class SessionConfig {
     }
 
     @Bean
-    public RedisOperationsSessionRepository sessionRepository(RedisOperations<Object, Object> sessionRedisOperations) {
-        return new RedisOperationsSessionRepository(sessionRedisOperations);
+    public RedisSessionRepository sessionRepository(RedisOperations<String, Object> sessionRedisOperations) {
+        return new RedisSessionRepository(sessionRedisOperations);
     }
 
 }

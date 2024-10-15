@@ -5,7 +5,7 @@ import com.corundumstudio.socketio.SocketIOClient;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.session.Session;
-import org.springframework.session.data.redis.RedisOperationsSessionRepository;
+import org.springframework.session.data.redis.RedisSessionRepository;
 
 import java.util.Base64;
 import java.util.UUID;
@@ -14,7 +14,7 @@ public class SessionUtil {
 
     public static final String ACCOUNT_ID = "ACCOUNT_ID";
 
-    public static OAuth2Authentication getOAuth2Authentication(HandshakeData handshakeData, RedisOperationsSessionRepository sessionRepository){
+    public static OAuth2Authentication getOAuth2Authentication(HandshakeData handshakeData, RedisSessionRepository sessionRepository){
         String cookie = handshakeData.getSingleUrlParam("SESSIONID");
         if(cookie != null) {
             String sessionId = new String(Base64.getDecoder().decode(cookie));
