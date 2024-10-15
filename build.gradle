@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.4'
+    id 'io.spring.dependency-management' version '1.1.6'
+}
+
+dependencies {
+//    implementation project(':core')
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = false
+}
