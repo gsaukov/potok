@@ -82,34 +82,31 @@ public class TestScenarioCreator {
             askContainer.put(exchangeCondition.getSymbol(), askSymbolOrderContainer);
         }
 
+        if(exchangeCondition.getAskPrice() != 0){
+            for(int i = 0; i < exchangeCondition.getTiers(); i++) {
+                Order order = createExchangeOrder(exchangeCondition.getSymbol(), exchangeCondition.getExchangeAccount(), Route.BUY, exchangeCondition.getAskPrice() - i, exchangeCondition.getVolume());
+                askContainer.insertAsk(order);
+                orderManager.addOrder(order);
+            }
+        }
+
         ConcurrentSkipListMap<Integer, ConcurrentLinkedDeque<Order>> bidSymbolOrderContainer = bidContainer.get(exchangeCondition.getSymbol());
         if(bidSymbolOrderContainer == null){
             bidSymbolOrderContainer = new ConcurrentSkipListMap();
             bidContainer.put(exchangeCondition.getSymbol(), bidSymbolOrderContainer);
         }
 
-        if(exchangeCondition.getAskPrice() != 0){
-            for(int i = 0; i < exchangeCondition.getTiers(); i++) {
-                NewOrder order = createExchangeOrder(exchangeCondition.getSymbol(), exchangeCondition.getExchangeAccount(), Route.BUY, exchangeCondition.getAskPrice() - i, exchangeCondition.getVolume());
-                orderManager.manageNew(order, exchangeCondition.getExchangeAccount());
-            }
-        }
-
         if(exchangeCondition.getBidPrice() != 0){
             for(int i = 0; i < exchangeCondition.getTiers(); i++) {
-                NewOrder order = createExchangeOrder(exchangeCondition.getSymbol(), exchangeCondition.getExchangeAccount(), Route.SELL, exchangeCondition.getBidPrice() + i, exchangeCondition.getVolume());
-                orderManager.manageNew(order, exchangeCondition.getExchangeAccount());
+                Order order = createExchangeOrder(exchangeCondition.getSymbol(), exchangeCondition.getExchangeAccount(), Route.SELL, exchangeCondition.getBidPrice() + i, exchangeCondition.getVolume());
+                bidContainer.insertBid(order);
+                orderManager.addOrder(order);
             }
         }
     }
 
-    private NewOrder createExchangeOrder(String symbol, Account exchangeAccount, Route route, Integer val, Integer volume) {
-        NewOrder newOrder = new NewOrder();
-        newOrder.setSymbol(symbol);
-        newOrder.setVal(val);
-        newOrder.setRoute(route.name());
-        newOrder.setVolume(volume);
-        return newOrder;
+    private Order createExchangeOrder(String symbol, Account exchangeAccount, Route route, Integer val, Integer volume) {
+        return new Order(symbol, exchangeAccount.getAccountId(), route, val, volume);
     }
 
     public Account createAccount(int balance) {
