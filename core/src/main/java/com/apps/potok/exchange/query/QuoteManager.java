@@ -68,7 +68,7 @@ public class QuoteManager {
     }
 
     private Integer getTierVolume(ConcurrentLinkedDeque<Order> priceTier){
-        Integer tierVolume = new Integer(0);
+        Integer tierVolume = Integer.valueOf(0);
         for(Order order : priceTier){
             tierVolume += order.getVolume();
         }
