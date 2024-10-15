@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
-import org.springframework.util.concurrent.ListenableFuture;
-import org.springframework.util.concurrent.ListenableFutureCallback;
+
+import java.util.concurrent.CompletableFuture;
 
 @Component
 public class ExecutionMessageProducer {
@@ -20,18 +20,13 @@ public class ExecutionMessageProducer {
 
     public void sendMessage(Execution message) {
 
-        ListenableFuture<SendResult<String, Execution>> future = executionKafkaTemplate.send(topicName, message);
+        CompletableFuture<SendResult<String, Execution>> future = executionKafkaTemplate.send(topicName, message);
 
-        future.addCallback(new ListenableFutureCallback<SendResult<String, Execution>>() {
-
-            @Override
-            public void onSuccess(SendResult<String, Execution> result) {
+        future.whenComplete((result, ex) -> {
+            if (ex == null) {
                 System.out.println("Sent message=[" + message + "] with offset=[" + result.getRecordMetadata()
                         .offset() + "]");
-            }
-
-            @Override
-            public void onFailure(Throwable ex) {
+            } else {
                 System.out.println("Unable to send message=[" + message + "] due to : " + ex.getMessage());
             }
         });
