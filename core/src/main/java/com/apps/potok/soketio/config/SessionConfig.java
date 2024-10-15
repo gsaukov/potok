@@ -21,8 +21,8 @@ public class SessionConfig {
     }
 
     @Bean
-    public RedisOperations<Object, Object> sessionRedisOperations() {
-        RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
+    public RedisOperations<String, Object> sessionRedisOperations() {
+        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
         redisTemplate.setConnectionFactory(this.redisConnectionFactory);
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         redisTemplate.setHashKeySerializer(new StringRedisSerializer());
