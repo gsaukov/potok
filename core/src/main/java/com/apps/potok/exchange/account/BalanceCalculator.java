@@ -104,6 +104,7 @@ public class BalanceCalculator {
         long executionSellBalance = 0l;
         statistics.addCloseShorts(position.getCloseShort().size());
         for(CloseShortPosition closeShortPosition : position.getCloseShort().values()) {
+            //close short does not have price you only return back the shares you owed.
             closedShortQuantity = closedShortQuantity + closeShortPosition.getAmount();
         }
         statistics.addExecutions(position.getSellExecutions().size());

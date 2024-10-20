@@ -59,6 +59,7 @@ public class Position {
 
     private void applyBuyExecution (Accountable execution) {
         AtomicInteger newVolume = new AtomicInteger(execution.getQuantity());
+        //this is two step non blocking volume modification that checks presence of volume
         AtomicInteger existingVolume = buyPriceValueAggregation.putIfAbsent(execution.getFillPrice(), newVolume);
         if(existingVolume != null) {
             existingVolume.addAndGet(newVolume.get());
