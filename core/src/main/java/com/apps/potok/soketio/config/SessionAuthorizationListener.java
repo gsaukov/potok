@@ -1,6 +1,7 @@
 package com.apps.potok.soketio.config;
 
 import com.corundumstudio.socketio.AuthorizationListener;
+import com.corundumstudio.socketio.AuthorizationResult;
 import com.corundumstudio.socketio.HandshakeData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,17 +23,17 @@ public class SessionAuthorizationListener implements AuthorizationListener {
     private RedisSessionRepository sessionRepository;
 
     @Override
-    public boolean isAuthorized(HandshakeData data) {
+    public AuthorizationResult getAuthorizationResult(HandshakeData data) {
         if(testModeAuthentication) {
-            return true;
+            return new AuthorizationResult(true);
         }
 
         OAuth2Authentication oAuth2Authentication = SessionUtil.getOAuth2Authentication(data, sessionRepository);
 
         if(oAuth2Authentication != null) {
-            return oAuth2Authentication.isAuthenticated();
+            return new AuthorizationResult(oAuth2Authentication.isAuthenticated());
         } else {
-            return false;
+            return new AuthorizationResult(false);
         }
     }
 }
