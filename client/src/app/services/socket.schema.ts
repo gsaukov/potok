@@ -37,3 +37,45 @@ export interface QuoteResponse {
   bidQuotes: Quote[],
   askQuotes: Quote[]
 }
+
+export interface OrderConfirmation {
+  uuid: string,
+  timestamp: string,
+  symbol: string,
+  account: string,
+  route: string,
+  val: number,
+  originalVolume: number,
+  volume: number,
+  active: boolean,
+  blockedPrice: number
+}
+
+//balance comes as a value.
+
+export interface Execution {
+  executionUuid: string,
+  counterExecutionUuid: string,
+  orderUuid: string,
+  timestamp: string,
+  symbol: string,
+  accountId: string,
+  route: string,
+  fillPrice: number,
+  blockedPrice: number,
+  quantity: number,
+  orderLeftQuantity: number,
+  filled: boolean,
+}
+
+export interface PositionNotification {
+  uuid: string,
+  createdTimestamp: string,
+  symbol: string,
+  route: string,
+  account: string,
+  volume: number,
+  weightedAveragePrice: number,
+  averagePerformance: number
+}
+
