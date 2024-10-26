@@ -23,6 +23,11 @@ export interface QuoteRequest {
   symbol: string
 }
 
+export interface CloseShortPositionRequest {
+  '@class': 'com.apps.potok.soketio.model.execution.CloseShortPositionRequest',
+  symbol: string,
+  amount: number
+}
 
 //================= RESPONSE =================
 
