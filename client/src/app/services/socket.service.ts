@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
 import { Observable } from 'rxjs';
+import {CancelOrder, NewOrder, QuoteRequest} from './socket.schema';
 
 @Injectable({
   providedIn: 'root'
@@ -77,10 +78,16 @@ export class SocketService {
     });
   }
 
+  sendQuoteRequest(quoteRequest: QuoteRequest): void {
+    this.socket.emit('quoteRequest', quoteRequest);
+  }
 
-  // Emit an event
-  emit(eventName: string, data: any): void {
-    this.socket.emit(eventName, data);
+  sendNewOrder(newOrder: NewOrder): void {
+    this.socket.emit('newOrder', newOrder);
+  }
+
+  sendCancelOrder(cancelOrder: CancelOrder): void {
+    this.socket.emit('cancelOrder', cancelOrder);
   }
 
   // Disconnect the socket
