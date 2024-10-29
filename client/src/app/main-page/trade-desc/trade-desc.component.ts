@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './trade-desc.component.html',
-  styleUrl: './trade-desc.component.css'
+  styleUrl: './trade-desc.component.scss'
 })
 export class TradeDescComponent {
 

@@ -7,7 +7,7 @@ import {MainPageComponent} from './main-page/main-page.component';
   standalone: true,
   imports: [RouterOutlet, MainPageComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'client';
