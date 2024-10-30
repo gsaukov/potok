@@ -1,28 +1,37 @@
 import { Injectable } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
 import { Observable } from 'rxjs';
-import {CancelOrder, NewOrder, QuoteRequest} from './socket.schema';
+import {
+  CancelOrder,
+  Execution,
+  NewOrder,
+  OrderConfirmation,
+  Position,
+  QuoteRequest,
+  QuoteResponse
+} from './socket.schema';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SocketService {
-  private socket: Socket;
+  private socket!: Socket;
 
   constructor() {
-    this.socket = io('https://localhost:9092',
-      { transports: ['websocket'],
-        forceNew: true,
-        path : '',
-        secure: true,
-        rejectUnauthorized: false,
-        extraHeaders: {'x-clientid': 'bazooka'},
-        query : {'SESSIONID': 'NGZhMWE0OGEtOTdiZS00MjEyLWJhNTYtMDcwOTZiNGY1Y2Ji'},
-        upgrade: false
-      });
   }
 
-  listenConnect(): Observable<string> {
+  connect(): Observable<string> {
+    this.socket = io('https://localhost:9092', {
+      transports: ['websocket'],
+      forceNew: true,
+      path: '',
+      secure: true,
+      rejectUnauthorized: false,
+      extraHeaders: {'x-clientid': 'bazooka'},
+      query: {'SESSIONID': 'NGZhMWE0OGEtOTdiZS00MjEyLWJhNTYtMDcwOTZiNGY1Y2Ji'},
+      upgrade: false
+    });
+
     return new Observable((subscriber) => {
       this.socket.on('connect', () => {
         subscriber.next('Client has connected to the server!');
@@ -30,47 +39,55 @@ export class SocketService {
     });
   }
 
+  listenDisconnect(): Observable<string> {
+    return new Observable((subscriber) => {
+      this.socket.on('disconnect', (data: any) => {
+        subscriber.next(data);
+      });
+    });
+  }
+
   listenMessage(): Observable<string> {
     return new Observable((subscriber) => {
       this.socket.on('message', (data: any) => {
-        subscriber.next(data.line);
-      });
-    });
-  }
-
-  listenQuoteResponse(): Observable<any> {
-    return new Observable((subscriber) => {
-      this.socket.on('quoteResponse', (data) => {
         subscriber.next(data);
       });
     });
   }
 
-  listenOrderConfirm(): Observable<any> {
+  listenQuoteResponse(): Observable<QuoteResponse> {
     return new Observable((subscriber) => {
-      this.socket.on('orderConfirm', (data) => {
+      this.socket.on('quoteResponse', (data: QuoteResponse) => {
         subscriber.next(data);
       });
     });
   }
 
-  listenExecution(): Observable<any> {
+  listenOrderConfirm(): Observable<OrderConfirmation> {
     return new Observable((subscriber) => {
-      this.socket.on('execution', (data) => {
+      this.socket.on('orderConfirm', (data: OrderConfirmation) => {
         subscriber.next(data);
       });
     });
   }
 
-  listenBalance(): Observable<any> {
+  listenExecution(): Observable<Execution> {
     return new Observable((subscriber) => {
-      this.socket.on('balance', (data) => {
+      this.socket.on('execution', (data: Execution) => {
         subscriber.next(data);
       });
     });
   }
 
-  listenPositionNotification(): Observable<any> {
+  listenBalance(): Observable<number> {
+    return new Observable((subscriber) => {
+      this.socket.on('balance', (data:number) => {
+        subscriber.next(data);
+      });
+    });
+  }
+
+  listenPositionNotification(): Observable<Position> {
     return new Observable((subscriber) => {
       this.socket.on('positionNotification', (data) => {
         subscriber.next(data);

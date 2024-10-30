@@ -73,7 +73,7 @@ export interface Execution {
   filled: boolean,
 }
 
-export interface PositionNotification {
+export interface Position {
   uuid: string,
   createdTimestamp: string,
   symbol: string,
