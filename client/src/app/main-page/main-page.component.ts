@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component } from '@angular/core';
+import {SocketService} from '../services/socket.service';
 
 @Component({
   selector: 'app-main-page',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
   templateUrl: './main-page.component.html',
   styleUrl: './main-page.component.scss'
 })
-export class MainPageComponent {
+export class MainPageComponent implements AfterViewInit {
+  constructor(private socketService: SocketService) {
+  }
+
+  ngAfterViewInit(): void {
+    this.socketService.connect().subscribe(r => console.log(r))
+  }
 
 }
