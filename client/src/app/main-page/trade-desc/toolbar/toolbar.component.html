@@ -1,1 +1,27 @@
-<p>toolbar works!</p>
+<form id="tradeform" class="row-container" action="#" onsubmit="return false;">
+  <div class="column-container">
+    <fieldset class="form-group">
+      <div class="row-container">
+        <input id="symbol" class="form-control" type="text" placeholder="Symbol.." style="width: 10em; margin-right: 20px;"/>
+        <select id="route" class="form-control" style="width: 6em; margin-right: 20px;">
+          <option value="BUY">BUY</option>
+          <option value="SELL">SELL</option>
+          <option value="SHORT">SHORT</option>
+        </select>
+        <input id="vol" class="form-control" type="text" placeholder="Volume..." style="width: 10em; margin-right: 20px;"/>
+        <input id="val" class="form-control" type="text" placeholder="Price..."  style="width: 10em; margin-right: 20px;"/>
+        <button type="button" onClick="subscribe()" style="width: 7em;" >Subscribe</button>
+        <button type="button" onClick="newOrder()" style="margin-right: 20px; width: 7em;" >Order</button>
+        <div class="row">
+          <div class="col-6 col-md-3">
+            <div class="row-container" >
+              <h2>Balance:</h2>
+              <h2><div id="balanceIndicator" style="margin-left: 5px; margin-right: 5px"></div></h2>
+              <a href='#'  aria-label='Disconnect' onclick='sendDisconnect()' style="font-size: 40px; line-height: 0">&times;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</form>
