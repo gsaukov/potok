@@ -9,4 +9,15 @@ import { Component } from '@angular/core';
 })
 export class ToolbarComponent {
 
+  subscribe() {
+
+  }
+
+  newOrder() {
+
+  }
+
+  sendDisconnect() {
+
+  }
 }
