@@ -12,15 +12,12 @@ export interface CancelOrder {
   uuid : string,
 }
 
-export interface QuoteRequest {
-  '@class': 'com.apps.potok.soketio.model.quote.QuoteRequest',
+export class QuoteRequest {
+  '@class': 'com.apps.potok.soketio.model.quote.QuoteRequest'
   symbol: string
-}
-
-
-export interface QuoteRequest {
-  '@class': 'com.apps.potok.soketio.model.quote.QuoteRequest',
-  symbol: string
+  constructor(symbol: string) {
+    this.symbol = symbol
+  }
 }
 
 export interface CloseShortPositionRequest {
