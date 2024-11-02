@@ -13,7 +13,7 @@ export interface CancelOrder {
 }
 
 export class QuoteRequest {
-  '@class': 'com.apps.potok.soketio.model.quote.QuoteRequest'
+  '@class' = 'com.apps.potok.soketio.model.quote.QuoteRequest'
   symbol: string
   constructor(symbol: string) {
     this.symbol = symbol
