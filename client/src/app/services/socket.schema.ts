@@ -1,29 +1,43 @@
-export interface NewOrder {
-  '@class' : 'com.apps.potok.soketio.model.order.NewOrder',
-  uuid : string|null,
-  symbol : string,
-  route : string,
-  val : number ,
+export class NewOrder {
+  readonly '@class' = 'com.apps.potok.soketio.model.order.NewOrder'
+  uuid : string|null
+  symbol : string
+  route : string
+  val : number
   volume : number
+  constructor(symbol: string, route: string, val: number, volume: number) {
+    this.uuid = null
+    this.symbol = symbol
+    this.route = route
+    this.val = val
+    this.volume = volume
+  }
 }
 
-export interface CancelOrder {
-  '@class' : 'com.apps.potok.soketio.model.order.CancelOrder',
-  uuid : string,
+export class CancelOrder {
+  readonly '@class' = 'com.apps.potok.soketio.model.order.CancelOrder'
+  uuid : string
+  constructor(uuid: string) {
+    this.uuid = uuid
+  }
 }
 
 export class QuoteRequest {
-  '@class' = 'com.apps.potok.soketio.model.quote.QuoteRequest'
+  readonly '@class' = 'com.apps.potok.soketio.model.quote.QuoteRequest'
   symbol: string
   constructor(symbol: string) {
     this.symbol = symbol
   }
 }
 
-export interface CloseShortPositionRequest {
-  '@class': 'com.apps.potok.soketio.model.execution.CloseShortPositionRequest',
-  symbol: string,
+export class CloseShortPositionRequest {
+  readonly '@class' = 'com.apps.potok.soketio.model.execution.CloseShortPositionRequest'
+  symbol: string
   amount: number
+  constructor(symbol: string, amount: number) {
+    this.symbol = symbol
+    this.amount = amount
+  }
 }
 
 //================= RESPONSE =================
