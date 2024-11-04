@@ -11,17 +11,28 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
   styleUrl: './toolbar.component.scss'
 })
 export class ToolbarComponent {
-  tradeForm!: FormGroup;
+  tradeForm: FormGroup;
 
   constructor(private socketService: SocketService) {
+    this.tradeForm = new FormGroup({
+      symbol: new FormControl('', [Validators.required]),
+      route: new FormControl('', []),
+      volume: new FormControl(Number(), []),
+      value: new FormControl(Number(), []),
+    })
   }
 
   subscribe() {
+    const symbol:string = this.tradeForm.controls['symbol'].value
     this.socketService.sendQuoteRequest(new QuoteRequest(symbol))
   }
 
   newOrder() {
-    this.socketService.sendNewOrder(new NewOrder(symbol, route, val, volume))
+    const symbol:string = this.tradeForm.controls['symbol'].value
+    const route:string  = this.tradeForm.controls['route'].value
+    const volume:number = this.tradeForm.controls['volume'].value
+    const value:number = this.tradeForm.controls['value'].value
+    this.socketService.sendNewOrder(new NewOrder(symbol, route, value, volume))
   }
 
   sendDisconnect() {
