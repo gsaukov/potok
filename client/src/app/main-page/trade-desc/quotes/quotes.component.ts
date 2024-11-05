@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import {QuoteResponse} from '../../../services/socket.schema';
+import {SocketService} from '../../../services/socket.service';
 
 @Component({
   selector: 'app-quotes',
@@ -11,6 +12,10 @@ import {QuoteResponse} from '../../../services/socket.schema';
 export class QuotesComponent {
   @ViewChild('tradingWindowBidTable', { static: true }) tradingWindowBidTable!: ElementRef;
   @ViewChild('tradingWindowAskTable', { static: true }) tradingWindowAskTable!: ElementRef;
+
+  constructor(private socketService: SocketService) {
+    socketService.listenQuoteResponse().subscribe(quoteResponse => this.buildBidAskTable(quoteResponse))
+  }
 
   buildBidAskTable(quoteResponse:QuoteResponse) {
     let bidData = quoteResponse.bidQuotes;
