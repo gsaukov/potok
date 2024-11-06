@@ -18,6 +18,7 @@ export class SocketService {
   private socket!: Socket;
 
   constructor() {
+    this.connect()
   }
 
   connect(): Observable<string> {
