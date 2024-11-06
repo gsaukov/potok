@@ -22,8 +22,8 @@ export class QuotesComponent {
     let askData = quoteResponse.askQuotes;
     let bidTable = this.buildHtmlTable(bidData);
     let askTable = this.buildHtmlTable(askData);
-    this.tradingWindowBidTable.nativeElement = bidTable.innerHTML;
-    this.tradingWindowBidTable.nativeElement = askTable.innerHTML;
+    this.tradingWindowBidTable.nativeElement.innerHTML = bidTable.innerHTML;
+    this.tradingWindowAskTable.nativeElement.innerHTML = askTable.innerHTML;
   }
 
   buildHtmlTable(arr: any[]): HTMLTableElement {
