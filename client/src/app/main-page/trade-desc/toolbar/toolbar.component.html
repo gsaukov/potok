@@ -1,23 +1,19 @@
 <form [formGroup]="tradeForm" (ngSubmit)="subscribe()">
-  <div class="column-container">
-    <div class="row-container">
-      <input formControlName="symbol" type="text" placeholder="Symbol.." style="width: 10em; margin-right: 20px;"/>
-      <select formControlName="route" style="width: 6em; margin-right: 20px;">
-        <option value="BUY">BUY</option>
-        <option value="SELL">SELL</option>
-        <option value="SHORT">SHORT</option>
-      </select>
-      <input formControlName="volume" type="number" placeholder="Volume..." style="width: 10em; margin-right: 20px;"/>
-      <input formControlName="value" type="number" placeholder="Price..."  style="width: 10em; margin-right: 20px;"/>
-      <button type="button" (click)="subscribe()" style="width: 7em;" >Subscribe</button>
-      <button type="button" (click)="newOrder()" style="width: 7em; margin-right: 20px;" >Order</button>
-      <div class="row">
-          <div class="row-container" >
-            <h2>Balance:</h2>
-            <h2><div #balanceIndicator style="margin-left: 5px; margin-right: 5px"></div></h2>
-            <a href='#' aria-label='Disconnect' (click)="sendDisconnect()" style="font-size: 40px; line-height: 0">&times;</a>
-          </div>
-      </div>
-    </div>
+  <input formControlName="symbol" type="text" placeholder="Symbol.." style="width: 10em; margin-right: 20px;"/>
+  <select formControlName="route" style="width: 6em; margin-right: 20px;">
+    <option value="BUY">BUY</option>
+    <option value="SELL">SELL</option>
+    <option value="SHORT">SHORT</option>
+  </select>
+  <input formControlName="volume" type="number" placeholder="Volume..." style="width: 10em; margin-right: 20px;"/>
+  <input formControlName="value" type="number" placeholder="Price..." style="width: 10em; margin-right: 20px;"/>
+  <button type="button" (click)="subscribe()" style="width: 7em;">Subscribe</button>
+  <button type="button" (click)="newOrder()" style="width: 7em; margin-right: 20px;">Order</button>
+  <div>
+    <h2>Balance:</h2>
+    <h2>
+      <div #balanceIndicator style="margin-left: 5px; margin-right: 5px"></div>
+    </h2>
+    <a href='#' aria-label='Disconnect' (click)="sendDisconnect()" style="font-size: 40px; line-height: 0">&times;</a>
   </div>
 </form>
