@@ -1,0 +1,12 @@
+.quote-table {
+  border-collapse: separate;
+  border-spacing: 10px 0px;
+}
+
+.quote-table-container {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  width: 500px;
+  height: 600px
+}
