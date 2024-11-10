@@ -1,14 +1,22 @@
 <form [formGroup]="tradeForm" (ngSubmit)="subscribe()">
-  <input formControlName="symbol" type="text" placeholder="Symbol.." style="width: 10em; margin-right: 20px;"/>
-  <select formControlName="route" style="width: 6em; margin-right: 20px;">
-    <option value="BUY">BUY</option>
-    <option value="SELL">SELL</option>
-    <option value="SHORT">SHORT</option>
-  </select>
-  <input formControlName="volume" type="number" placeholder="Volume..." style="width: 10em; margin-right: 20px;"/>
-  <input formControlName="value" type="number" placeholder="Price..." style="width: 10em; margin-right: 20px;"/>
-  <button type="button" (click)="subscribe()" style="width: 7em;">Subscribe</button>
-  <button type="button" (click)="newOrder()" style="width: 7em; margin-right: 20px;">Order</button>
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="symbol" type="text" placeholder="Symbol.." style="width: 10em; margin-right: 20px;"/>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-select formControlName="route" style="width: 6em; margin-right: 20px;">
+      <mat-option value="BUY">BUY</mat-option>
+      <mat-option value="SELL">SELL</mat-option>
+      <mat-option value="SHORT">SHORT</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="volume" type="number" placeholder="Volume..." style="width: 10em; margin-right: 20px;"/>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <input matInput formControlName="value" type="number" placeholder="Price..." style="width: 10em; margin-right: 20px;"/>
+  </mat-form-field>
+  <button mat-button (click)="subscribe()" style="width: 7em;">Subscribe</button>
+  <button mat-button (click)="newOrder()" style="width: 7em; margin-right: 20px;">Order</button>
   <div>
     <h2>Balance:</h2>
     <h2>
