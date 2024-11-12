@@ -1,18 +1,9 @@
-::ng-deep .mat-form-field {
-  .mat-input-element {
-    color: #b2c0c7;
-  }
-  .mat-form-field-label {
-    color: #b2c0c7;
-  }
-  .mat-form-field-underline {
-    background-color: #b2c0c7;
-  }
-  .mat-form-field-ripple {
-    background-color: #b2c0c7;
-  }
-  .mat-form-field-required-marker {
-    color: #b2c0c7;
-  }
+mat-form-field {
+  height: 3em;
+  width: 10em;
+  margin-right: 20px;
+  border: white;
+  color: white;
+  //color: #b2c0c7
 }
 
