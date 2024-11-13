@@ -18,11 +18,17 @@ body {
   --mat-select-enabled-arrow-color: #efedf0;
   --mat-option-selected-state-label-text-color: #0b0e16;
   --mat-option-label-text-color: #a1afc3;
+
+  --mdc-outlined-button-label-text-color: #a1afc3
 }
 
 .mat-mdc-select-panel {
   border-radius: 3px !important;
   box-shadow: 0px 0px 0px 2px #005cbb !important;
+}
+
+.mdc-button {
+  border-radius: 13px !important;
 }
 
 
