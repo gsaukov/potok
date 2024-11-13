@@ -5,12 +5,13 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @Component({
   selector: 'app-toolbar',
   standalone: true,
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss'
 })
