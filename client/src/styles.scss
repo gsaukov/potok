@@ -4,5 +4,21 @@ body {
   color: #a1afc3;
   overflow-y: scroll;
   overscroll-behavior: auto;
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto
+  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto;
+
+  --mdc-outlined-text-field-input-text-color: #a1afc3;
+  --mdc-outlined-text-field-disabled-input-text-color: #A9A9A9FF;
+  --mdc-outlined-text-field-input-text-placeholder-color: #a9a9a9;
+
+  --mat-select-panel-background-color: #0b0e16;
+  --mat-select-enabled-trigger-text-color: #a1afc3;
+  --mat-select-disabled-trigger-text-color: #a9a9a9;
+  --mat-select-placeholder-text-color: #efedf0;
+  --mat-select-enabled-arrow-color: #efedf0;
 }
+
+
+
+
+
+
