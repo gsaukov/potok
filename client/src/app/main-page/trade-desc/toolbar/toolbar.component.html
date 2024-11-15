@@ -1,19 +1,19 @@
 <form [formGroup]="tradeForm" (ngSubmit)="subscribe()">
   <mat-form-field appearance="outline">
-    <input matInput class="form-control" formControlName="symbol" type="text" placeholder="Symbol.."/>
+    <input matInput  formControlName="symbol" type="text" placeholder="Symbol.."/>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <mat-select class="form-control"  formControlName="route">
+    <mat-select   formControlName="route">
       <mat-option value="BUY">BUY</mat-option>
       <mat-option value="SELL">SELL</mat-option>
       <mat-option value="SHORT">SHORT</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <input matInput class="form-control"  formControlName="volume" type="number" placeholder="Volume..."/>
+    <input matInput   formControlName="volume" type="number" placeholder="Volume..."/>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <input matInput class="form-control"  formControlName="value" type="number" placeholder="Price..."/>
+    <input matInput   formControlName="value" type="number" placeholder="Price..."/>
   </mat-form-field>
   <button mat-stroked-button (click)="subscribe()" style="margin-right: 20px;" >Subscribe</button>
   <button mat-stroked-button (click)="newOrder()" >Order</button>
