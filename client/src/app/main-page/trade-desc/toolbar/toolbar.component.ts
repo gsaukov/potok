@@ -17,6 +17,7 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class ToolbarComponent {
   tradeForm: FormGroup;
+  balance:number = 0;
 
   constructor(private socketService: SocketService) {
     this.tradeForm = new FormGroup({
@@ -25,6 +26,7 @@ export class ToolbarComponent {
       volume: new FormControl(Number(), []),
       value: new FormControl(Number(), []),
     })
+    this.socketService.listenBalance().subscribe(b => this.balance = b);
   }
 
   subscribe() {
@@ -38,6 +40,10 @@ export class ToolbarComponent {
     const volume: number = this.tradeForm.controls['volume'].value
     const value: number = this.tradeForm.controls['value'].value
     this.socketService.sendNewOrder(new NewOrder(symbol, route, value, volume))
+  }
+
+  getBalance():number {
+    return this.balance
   }
 
   sendDisconnect() {

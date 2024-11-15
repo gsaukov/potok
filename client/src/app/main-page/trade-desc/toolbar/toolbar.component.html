@@ -15,13 +15,10 @@
   <mat-form-field appearance="outline">
     <input matInput   formControlName="value" type="number" placeholder="Price..."/>
   </mat-form-field>
-  <button mat-stroked-button (click)="subscribe()" style="margin-right: 20px;" >Subscribe</button>
-  <button mat-stroked-button (click)="newOrder()" >Order</button>
-  <div>
-    <h2>Balance:</h2>
-    <h2>
-      <div #balanceIndicator style="margin-left: 5px; margin-right: 5px"></div>
-    </h2>
-    <a href='#' aria-label='Disconnect' (click)="sendDisconnect()" style="font-size: 40px; line-height: 0">&times;</a>
-  </div>
+  <button mat-stroked-button (click)="subscribe()" style="margin-right: 20px; width: 7em;">Subscribe</button>
+  <button mat-stroked-button (click)="newOrder()"  style="margin-right: 20px; width: 7em;">Order</button>
+  <mat-form-field appearance="outline">
+    <input matInput formControlName="balance" value="{{getBalance()}}" [disabled]="true" type="number"/>
+  </mat-form-field>
+  <button mat-stroked-button (click)="sendDisconnect()" style="width: 2em;">&times;</button>
 </form>
