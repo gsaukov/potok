@@ -7,19 +7,19 @@ body {
   font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto;
 
   --mdc-outlined-text-field-input-text-color: #a1afc3;
-  --mdc-outlined-text-field-disabled-input-text-color: #A9A9A9FF;
-  --mdc-outlined-text-field-input-text-placeholder-color: #a9a9a9;
+  --mdc-outlined-text-field-disabled-input-text-color: #a1afc3;
+  --mdc-outlined-text-field-input-text-placeholder-color: #a1afc3;
   --mdc-outlined-text-field-hover-outline-color: #005cbb;
 
   --mat-select-panel-background-color: #0b0e16;
   --mat-select-enabled-trigger-text-color: #a1afc3;
-  --mat-select-disabled-trigger-text-color: #a9a9a9;
+  --mat-select-disabled-trigger-text-color: #a1afc3;
   --mat-select-placeholder-text-color: #efedf0;
   --mat-select-enabled-arrow-color: #efedf0;
   --mat-option-selected-state-label-text-color: #0b0e16;
   --mat-option-label-text-color: #a1afc3;
 
-  --mdc-outlined-button-label-text-color: #a1afc3;
+  --mdc-outlined-button-label-text-color: #efedf0;
 }
 
 .mat-mdc-select-panel {
@@ -28,13 +28,12 @@ body {
 }
 
 .mdc-button {
-  box-shadow: 0px 0px 0px 1px !important;
-  border-radius: 13px !important;
-  background-color: #efedf020 !important;
-  text-shadow: 1px 1px 1px 1px white  ;
+  border: 2px solid #005cbb !important;
+  border-radius: 20px !important;
+  background-color: #0b0e16 !important;
 }
 
-
-
-
+.mdc-button:hover {
+  box-shadow: 0px 0px 0px 1px #005cbb !important;
+}
 
