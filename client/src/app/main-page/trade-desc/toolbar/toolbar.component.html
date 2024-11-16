@@ -1,6 +1,6 @@
 <form [formGroup]="tradeForm" (ngSubmit)="subscribe()">
   <mat-form-field appearance="outline">
-    <input matInput  formControlName="symbol" type="text" placeholder="Symbol.."/>
+    <input matInput formControlName="symbol" type="text" placeholder="Symbol.."/>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-select   formControlName="route">
@@ -10,15 +10,15 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <input matInput   formControlName="volume" type="number" placeholder="Volume..."/>
+    <input matInput formControlName="volume" type="number" placeholder="Volume..."/>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <input matInput   formControlName="value" type="number" placeholder="Price..."/>
+    <input matInput formControlName="value" type="number" placeholder="Price..."/>
   </mat-form-field>
   <button mat-stroked-button (click)="subscribe()" style="margin-right: 20px; width: 7em;">Subscribe</button>
   <button mat-stroked-button (click)="newOrder()"  style="margin-right: 20px; width: 7em;">Order</button>
   <mat-form-field appearance="outline">
-    <input matInput formControlName="balance" value="{{getBalance()}}" [disabled]="true" type="number"/>
+    <input matInput formControlName="balance" type="number"/>
   </mat-form-field>
   <button mat-stroked-button (click)="sendDisconnect()" style="width: 2em;">&times;</button>
 </form>
