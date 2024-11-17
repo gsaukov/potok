@@ -25,7 +25,7 @@ export class ToolbarComponent {
       route: new FormControl('', []),
       volume: new FormControl(Number(), []),
       value: new FormControl(Number(), []),
-      balance: new FormControl({value: Number(), disabled: true}),
+      balance: new FormControl({value: this.balance, disabled: true}),
     })
     this.socketService.listenBalance().subscribe(b => this.balance = b);
   }
