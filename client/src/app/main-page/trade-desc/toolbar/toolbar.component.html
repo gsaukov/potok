@@ -1,24 +1,29 @@
 <form [formGroup]="tradeForm" (ngSubmit)="subscribe()">
   <mat-form-field appearance="outline">
-    <input matInput formControlName="symbol" type="text" placeholder="Symbol.."/>
+    <mat-label>Symbol</mat-label>
+    <input matInput formControlName="symbol" type="text" placeholder="Symbol..."/>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <mat-select   formControlName="route">
+    <mat-label>Route</mat-label>
+    <mat-select formControlName="route">
       <mat-option value="BUY">BUY</mat-option>
       <mat-option value="SELL">SELL</mat-option>
       <mat-option value="SHORT">SHORT</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field appearance="outline">
+    <mat-label>Volume</mat-label>
     <input matInput formControlName="volume" type="number" placeholder="Volume..."/>
   </mat-form-field>
   <mat-form-field appearance="outline">
-    <input matInput formControlName="value" type="number" placeholder="Price..."/>
+    <mat-label>Price</mat-label>
+    <input matInput formControlName="value" type="text" placeholder="Price..."/>
   </mat-form-field>
   <button mat-stroked-button (click)="subscribe()" style="margin-right: 20px; width: 7em;">Subscribe</button>
   <button mat-stroked-button (click)="newOrder()"  style="margin-right: 20px; width: 7em;">Order</button>
   <mat-form-field appearance="outline">
-    <input matInput formControlName="balance" type="number"/>
+    <mat-label style="margin: 0 5px 0 5px">Balance</mat-label>
+    <input matInput formControlName="balance" type="text" value="{{getBalance()}}"/>
   </mat-form-field>
   <button mat-stroked-button (click)="sendDisconnect()" style="width: 2em;">&times;</button>
 </form>
