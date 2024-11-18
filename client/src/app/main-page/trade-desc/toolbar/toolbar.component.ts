@@ -17,17 +17,17 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class ToolbarComponent {
   tradeForm: FormGroup;
-  balance:number = 0;
+  balance:number = -1;
 
-  constructor(private socketService: SocketService) {
+  constructor(public socketService: SocketService) {
     this.tradeForm = new FormGroup({
-      symbol: new FormControl('', [Validators.required]),
+      symbol: new FormControl('', []),
       route: new FormControl('', []),
-      volume: new FormControl(Number(), []),
-      value: new FormControl(Number(), []),
-      balance: new FormControl({value: this.balance, disabled: true}),
+      volume: new FormControl(null, []),
+      value: new FormControl(null, []),
+      balance: new FormControl({value: this.getBalance(), disabled: true}),
     })
-    this.socketService.listenBalance().subscribe(b => this.balance = b);
+    this.socketService.listenBalance().subscribe(b => this.setBalance(b));
   }
 
   subscribe() {
@@ -43,8 +43,12 @@ export class ToolbarComponent {
     this.socketService.sendNewOrder(new NewOrder(symbol, route, value, volume))
   }
 
-  getBalance():number {
-    return this.balance
+  setBalance(balance: number) {
+    this.balance = balance
+  }
+
+  getBalance() {
+    return this.socketService.isConnected()?this.balance:'Not Connected'
   }
 
   sendDisconnect() {

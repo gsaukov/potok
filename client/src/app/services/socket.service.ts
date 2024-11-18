@@ -114,4 +114,8 @@ export class SocketService {
       this.socket.disconnect();
     }
   }
+
+  isConnected(): boolean {
+    return this.socket.connected
+  }
 }
