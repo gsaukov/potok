@@ -20,6 +20,10 @@ body {
   --mat-option-label-text-color: #a1afc3;
 
   --mdc-outlined-button-label-text-color: #efedf0;
+
+  --mat-table-background-color: transparent;
+  --mat-table-header-headline-color: white;
+  --mat-table-row-item-label-text-color: white;
 }
 
 .mat-mdc-select-panel {
@@ -45,4 +49,9 @@ body {
 .mdc-text-field--disabled {
   border: 1px solid #efedf0 !important;
   border-radius: 3px !important;
+}
+
+.mat-mdc-table {
+  border: 1px solid #a1afc3 !important;
+  border-radius: 10px !important;
 }

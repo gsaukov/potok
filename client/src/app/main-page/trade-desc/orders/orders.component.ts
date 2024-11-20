@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { OrderConfirmation } from '../../../services/socket.schema';
 import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-orders',
   standalone: true,
-  imports: [MatTableModule],
+  imports: [MatTableModule, MatButtonModule],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss'
 })
@@ -30,6 +31,10 @@ export class OrdersComponent {
       {symbol: 'SAPJ', route: 'BUY', uuid: 'Some UUID', val: 27, volume: 60, active: true, originalVolume: 70, account: 'some acc', blockedPrice: -1, timestamp: "123123434324"},
       {symbol: 'SAPJ', route: 'BUY', uuid: 'Some UUID', val: 27, volume: 60, active: true, originalVolume: 70, account: 'some acc', blockedPrice: -1, timestamp: "123123434324"},
     ]
+  }
+
+  cancelOrder() {
+
   }
 
   addOrderToTable(newOrder: OrderConfirmation) {
