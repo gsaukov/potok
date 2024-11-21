@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { OrderConfirmation } from '../../../services/socket.schema';
+import {CancelOrder, OrderConfirmation} from '../../../services/socket.schema';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
+import {SocketService} from '../../../services/socket.service';
 
 @Component({
   selector: 'app-orders',
@@ -14,7 +15,7 @@ export class OrdersComponent {
   dataSource: OrderConfirmation[]
   displayedColumns: string[] = ['UUID', 'Symbol', 'Route', 'Price', 'Quantity', 'Filled', 'Left', 'Actions'];
 
-  constructor() {
+  constructor(private socketService: SocketService) {
 
     this.dataSource = [
       {symbol: 'SAPJ', route: 'BUY', uuid: 'Some UUID', val: 27, volume: 60, active: true, originalVolume: 70, account: 'some acc', blockedPrice: -1, timestamp: "123123434324"},
@@ -33,8 +34,8 @@ export class OrdersComponent {
     ]
   }
 
-  cancelOrder() {
-
+  cancelOrder(uuid:string) {
+    this.socketService.sendCancelOrder(new CancelOrder(uuid))
   }
 
   addOrderToTable(newOrder: OrderConfirmation) {

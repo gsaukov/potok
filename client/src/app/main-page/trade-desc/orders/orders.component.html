@@ -36,7 +36,7 @@
   <ng-container matColumnDef="Actions">
     <th mat-header-cell *matHeaderCellDef> Actions </th>
     <td mat-cell *matCellDef="let order">
-      <button mat-stroked-button (click)="cancelOrder()" style="font-size: 1.3em; width: 1em! important;min-width: unset!important;">&times;</button>
+      <button mat-stroked-button (click)="cancelOrder(order.uuid)" style="font-size: 1.3em; width: 1em! important;min-width: unset!important;">&times;</button>
     </td>
   </ng-container>
 
