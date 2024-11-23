@@ -40,17 +40,9 @@ export class OrdersComponent {
 
   getOrderTypeClass(order: OrderConfirmation):string {
     if(order.route === 'BUY') {
-      if(this.isActive(order)) {
-        return 'long-order';
-      } else {
-        return 'filled-long-order';
-      }
+      return this.isActive(order)?'long-order': 'filled-long-order';
     } else {
-      if(this.isActive(order)) {
-        return 'short-order';
-      } else {
-        return 'filled-short-order';
-      }
+      return this.isActive(order)?'short-order':'filled-short-order'
     }
   }
 
