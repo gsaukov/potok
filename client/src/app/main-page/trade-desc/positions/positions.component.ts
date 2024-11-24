@@ -17,7 +17,11 @@ export class PositionsComponent {
   displayedColumns: string[] = ['UUID', 'Symbol', 'Route', 'Quantity', 'Wap'];
 
   constructor(private socketService:SocketService) {
-    this.dataSource = []
+    this.dataSource = [
+      {uuid:'Some UUID', createdTimestamp: 'timstamp', symbol: 'SAPJ', route: 'BUY', account: 'My Account', volume: 100, weightedAveragePrice: 99, averagePerformance: 0},
+      {uuid:'Some UUID', createdTimestamp: 'timstamp', symbol: 'SAPJ', route: 'BUY', account: 'My Account', volume: 100, weightedAveragePrice: 99, averagePerformance: 0},
+      {uuid:'Some UUID', createdTimestamp: 'timstamp', symbol: 'SAPJ', route: 'BUY', account: 'My Account', volume: 100, weightedAveragePrice: 99, averagePerformance: 0},
+    ]
   }
 
   isActive(position:Position) {
