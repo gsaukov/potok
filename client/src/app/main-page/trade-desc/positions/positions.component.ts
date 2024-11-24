@@ -33,6 +33,10 @@ export class PositionsComponent {
   }
 
   getPositionTypeClass(position: Position) {
-
+    if(position.route === 'BUY') {
+      return position.volume > 0?'long-position':'closed-long-position'
+    } else {
+      return position.volume < 0?'short-position':'closed-short-position'
+    }
   }
 }
