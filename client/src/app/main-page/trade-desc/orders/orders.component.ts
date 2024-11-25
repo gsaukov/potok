@@ -50,24 +50,10 @@ export class OrdersComponent {
     return order.active && order.volume > 0
   }
 
-  // processExecution(execution: Execution) {
-  //   const order:OrderConfirmation = this.getOrderById(execution.orderUuid);
-  //
-  //   const quantity = order.originalVolume;
-  //   const filled = order.originalVolume - order.volume;
-  //   const left = order.volume;
-  //
-  //   filled.innerHTML = parseInt(quantity.innerHTML) - parseInt(execution.orderLeftQuantity);
-  //   left.innerHTML = parseInt(execution.orderLeftQuantity);
-  //
-  //   if(execution.orderLeftQuantity === 0) {
-  //     if(execution.route === 'BUY') {
-  //       row.classList.add('filled-long-order');
-  //     } else {
-  //       row.classList.add('filled-short-order');
-  //     }
-  //   }
-  // }
+  applyExecution(execution: Execution) {
+    const order:OrderConfirmation = this.getOrderById(execution.orderUuid);
+    order.volume = execution.orderLeftQuantity;
+  }
 
   getOrderById(uuid:string):OrderConfirmation {
     return this.dataSource.find(e => e.uuid === uuid)!
