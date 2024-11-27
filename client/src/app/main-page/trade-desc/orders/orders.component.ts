@@ -33,8 +33,10 @@ export class OrdersComponent {
     //   {symbol: 'SAPJ', route: 'BUY', uuid: 'Some UUID', val: 27, volume: 0, active: true, originalVolume: 70, account: 'some acc', blockedPrice: -1, timestamp: "123123434324"},
     //   {symbol: 'SAPJ', route: 'SHORT', uuid: 'Some UUID', val: 27, volume: 0, active: true, originalVolume: 70, account: 'some acc', blockedPrice: -1, timestamp: "123123434324"},
     // ]
-    this.socketService.listenOrderConfirm().subscribe(o => this.dataSource.data.push(o))
-    this.socketService.listenExecution().subscribe(e => this.applyExecution(e))
+    this.socketService.listenOrderConfirm().subscribe(o => {
+        this.orders.push(o)
+        this.dataSource.data = this.orders
+      })
   }
 
   cancelOrder(uuid:string) {
@@ -53,13 +55,8 @@ export class OrdersComponent {
     return order.active && order.volume > 0
   }
 
-  applyExecution(execution: Execution) {
-    const order:OrderConfirmation = this.getOrderById(execution.orderUuid);
-    order.volume = execution.orderLeftQuantity;
-  }
-
   getOrderById(uuid:string):OrderConfirmation {
-    return this.dataSource.data.find(e => e.uuid === uuid)!
+    return this.orders.find(e => e.uuid === uuid)!
   }
 
 }
