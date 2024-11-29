@@ -44,7 +44,6 @@ public class SpringConfig {
         SocketIOServer server = new SocketIOServer(config);
         server.addConnectListener(sessionConnectListener);
         server.addDisconnectListener(sessionDisconnectListener);
-        server.addNamespace("/agents");
 
         return server;
 
