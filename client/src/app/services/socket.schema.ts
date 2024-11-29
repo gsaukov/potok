@@ -40,6 +40,10 @@ export class CloseShortPositionRequest {
   }
 }
 
+export class AccountDataRequest {
+  readonly '@class' = 'com.apps.potok.soketio.model.account.AccountDataRequest'
+}
+
 //================= RESPONSE =================
 
 export interface Quote {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
 import { Observable } from 'rxjs';
 import {
+  AccountDataRequest,
   CancelOrder,
   Execution,
   NewOrder,
@@ -18,7 +19,7 @@ export class SocketService {
   private socket!: Socket;
 
   constructor() {
-    this.connect()
+    this.connect().subscribe()
   }
 
   connect(): Observable<string> {
@@ -35,7 +36,7 @@ export class SocketService {
 
     return new Observable((subscriber) => {
       this.socket.on('connect', () => {
-        subscriber.next('Client has connected to the server!');
+        this.sendAccountDataRequest()
       });
     });
   }
@@ -94,6 +95,10 @@ export class SocketService {
         subscriber.next(data);
       });
     });
+  }
+
+  sendAccountDataRequest(): void {
+    this.socket.emit('accountDataRequest', new AccountDataRequest());
   }
 
   sendQuoteRequest(quoteRequest: QuoteRequest): void {
