@@ -1,10 +1,5 @@
 package com.apps.potok.soketio.config;
 
-import com.apps.potok.exchange.core.Order;
-import com.apps.potok.exchange.core.Position;
-import com.apps.potok.exchange.core.SymbolContainer;
-import com.apps.potok.soketio.model.LogLine;
-import com.apps.potok.soketio.model.execution.PositionNotification;
 import com.apps.potok.exchange.account.Account;
 import com.apps.potok.exchange.account.AccountManager;
 import com.corundumstudio.socketio.SocketIOClient;
@@ -16,8 +11,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.session.data.redis.RedisSessionRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 import static com.apps.potok.soketio.config.SessionUtil.ACCOUNT_ID;
 import static com.apps.potok.exchange.account.AccountManager.TEST_ACCOUNT_ID;
@@ -32,18 +25,11 @@ public class SessionConnectListener implements ConnectListener {
     private RedisSessionRepository sessionRepository;
 
     @Autowired
-    private SymbolContainer symbolContainer;
-
-    @Autowired
     private AccountManager accountManager;
 
     @Override
     public void onConnect(SocketIOClient client) {
         Account account = assignAccountId(client);
-        sendClientSymbols(client);
-        sendBalance(account, client);
-        sendPositions(account, client);
-        sendOrders(account, client);
     }
 
     private Account assignAccountId(SocketIOClient client){
@@ -68,35 +54,4 @@ public class SessionConnectListener implements ConnectListener {
         return null;
     }
 
-    private void sendClientSymbols(SocketIOClient client) {
-        client.sendEvent("message", getTenSymbols());
-    }
-
-    private LogLine getTenSymbols() {
-        List<String> symols = symbolContainer.getSymbols().subList(0, 10);
-        LogLine logLine = new LogLine();
-        logLine.setLine(symols.toString());
-        return logLine;
-    }
-
-    private void sendBalance(Account account, SocketIOClient client) {
-        client.sendEvent("balance", account.getBalance());
-    }
-
-    private void sendPositions(Account account, SocketIOClient client) {
-        for(Position position : account.getPositions()) {
-            PositionNotification notification = new PositionNotification(position);
-            client.sendEvent("positionNotification", notification);
-        }
-        for(Position position : account.getShortPositions()) {
-            PositionNotification notification = new PositionNotification(position);
-            client.sendEvent("positionNotification", notification);
-        }
-    }
-
-    private void sendOrders(Account account, SocketIOClient client) {
-        for(Order order : account.getOrders()) {
-            client.sendEvent("orderConfirm", order);
-        }
-    }
 }
