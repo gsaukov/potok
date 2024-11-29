@@ -52,6 +52,7 @@
                 });
 
 		socket.on('connect', function() {
+            accountDataRequest();
 			output('<span class="connect-msg">Client has connected to the server!</span>');
 		});
 		
@@ -97,6 +98,10 @@
                         var jsonObject = {'@class': 'com.apps.potok.soketio.model.LogLine', line: message};
                         socket.emit('message', jsonObject);
 		}
+
+        function accountDataRequest() {
+            socket.emit('accountDataRequest', {'@class': 'com.apps.potok.soketio.model.account.AccountDataRequest'});
+        }
 
         function subscribe() {
             var message = $('#msg').val();
