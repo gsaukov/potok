@@ -1,7 +1,8 @@
-package com.apps.potok.soketio.config;
+package com.apps.potok.soketio.listeners;
 
 import com.apps.potok.exchange.account.Account;
 import com.apps.potok.exchange.account.AccountManager;
+import com.apps.potok.soketio.config.SessionUtil;
 import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.listener.ConnectListener;
 import org.springframework.beans.factory.annotation.Autowired;

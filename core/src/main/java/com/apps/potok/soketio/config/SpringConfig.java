@@ -1,5 +1,7 @@
 package com.apps.potok.soketio.config;
 
+import com.apps.potok.soketio.listeners.SessionConnectListener;
+import com.apps.potok.soketio.listeners.SessionDisconnectListener;
 import com.corundumstudio.socketio.SocketIOServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

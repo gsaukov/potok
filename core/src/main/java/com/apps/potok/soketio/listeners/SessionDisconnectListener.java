@@ -1,4 +1,4 @@
-package com.apps.potok.soketio.config;
+package com.apps.potok.soketio.listeners;
 
 import com.apps.potok.exchange.account.AccountManager;
 import com.corundumstudio.socketio.SocketIOClient;
