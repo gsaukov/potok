@@ -15,7 +15,7 @@ export class PositionsComponent {
 
   positions: Position[] = []
   dataSource = new MatTableDataSource<Position>();
-  displayedColumns: string[] = ['UUID', 'Symbol', 'Route', 'Quantity', 'Wap'];
+  displayedColumns: string[] = ['UUID', 'Symbol', 'Route', 'Quantity', 'Wap', 'Actions'];
 
   constructor(private socketService:SocketService) {
     // this.positions = [
