@@ -1,8 +1,12 @@
 <app-toolbar></app-toolbar>
 <div style="display: flex; flex-direction: row;">
   <app-quotes></app-quotes>
-  <div style="display: flex; flex-direction: column;">
-    <app-orders style="width: 100%"></app-orders>
-    <app-positions style="width: 100%"></app-positions>
+  <div class="grid-container">
+    <div class="grid-item">
+      <app-orders></app-orders>
+    </div>
+    <div class="grid-item">
+      <app-positions></app-positions>
+    </div>
   </div>
 </div>
