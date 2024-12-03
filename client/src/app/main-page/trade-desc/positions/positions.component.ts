@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import {MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import {SocketService} from '../../../services/socket.service';
-import {Execution, OrderConfirmation, Position} from '../../../services/socket.schema';
+import {Position} from '../../../services/socket.schema';
+import {TEST_POSITIONS} from './test.positions';
 
 @Component({
   selector: 'app-positions',
@@ -18,12 +19,8 @@ export class PositionsComponent {
   displayedColumns: string[] = ['UUID', 'Symbol', 'Route', 'Quantity', 'Wap', 'Actions'];
 
   constructor(private socketService:SocketService) {
-    // this.positions = [
-    //   {uuid:'Some UUID', createdTimestamp: 'timstamp', symbol: 'SAPJ', route: 'BUY', account: 'My Account', volume: 100, weightedAveragePrice: 99, averagePerformance: 0},
-    //   {uuid:'Some UUID', createdTimestamp: 'timstamp', symbol: 'SAPJ', route: 'BUY', account: 'My Account', volume: 100, weightedAveragePrice: 99, averagePerformance: 0},
-    //   {uuid:'Some UUID', createdTimestamp: 'timstamp', symbol: 'SAPJ', route: 'BUY', account: 'My Account', volume: 100, weightedAveragePrice: 99, averagePerformance: 0},
-    // ]
-
+    this.positions = TEST_POSITIONS
+    this.dataSource.data = this.positions
     this.socketService.listenPositionNotification().subscribe(p => {
       this.positions.push(p)
       this.dataSource.data = this.positions
