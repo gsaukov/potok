@@ -1,48 +1,50 @@
-<table mat-table [dataSource]="dataSource">
-  <ng-container matColumnDef="UUID">
-    <th mat-header-cell *matHeaderCellDef> Order ID </th>
-    <td mat-cell *matCellDef="let order"> {{order.uuid}} </td>
-  </ng-container>
-  <ng-container matColumnDef="Symbol">
-    <th mat-header-cell *matHeaderCellDef> Symbol </th>
-    <td mat-cell *matCellDef="let order">{{order.symbol}}</td>
-  </ng-container>
+<div class="table-container">
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="UUID">
+      <th mat-header-cell *matHeaderCellDef> Order ID</th>
+      <td mat-cell *matCellDef="let order"> {{ order.uuid }}</td>
+    </ng-container>
+    <ng-container matColumnDef="Symbol">
+      <th mat-header-cell *matHeaderCellDef> Symbol</th>
+      <td mat-cell *matCellDef="let order">{{ order.symbol }}</td>
+    </ng-container>
 
-  <ng-container matColumnDef="Route">
-    <th mat-header-cell *matHeaderCellDef> Route </th>
-    <td mat-cell *matCellDef="let order">{{order.route}}</td>
-  </ng-container>
+    <ng-container matColumnDef="Route">
+      <th mat-header-cell *matHeaderCellDef> Route</th>
+      <td mat-cell *matCellDef="let order">{{ order.route }}</td>
+    </ng-container>
 
-  <ng-container matColumnDef="Price">
-    <th mat-header-cell *matHeaderCellDef> Price </th>
-    <td mat-cell *matCellDef="let order">{{order.val}}</td>
-  </ng-container>
+    <ng-container matColumnDef="Price">
+      <th mat-header-cell *matHeaderCellDef> Price</th>
+      <td mat-cell *matCellDef="let order">{{ order.val }}</td>
+    </ng-container>
 
-  <ng-container matColumnDef="Quantity">
-    <th mat-header-cell *matHeaderCellDef> Quantity </th>
-    <td mat-cell *matCellDef="let order">{{order.originalVolume}}</td>
-  </ng-container>
+    <ng-container matColumnDef="Quantity">
+      <th mat-header-cell *matHeaderCellDef> Quantity</th>
+      <td mat-cell *matCellDef="let order">{{ order.originalVolume }}</td>
+    </ng-container>
 
-  <ng-container matColumnDef="Filled">
-    <th mat-header-cell *matHeaderCellDef> Filled </th>
-    <td mat-cell *matCellDef="let order">{{order.originalVolume - order.volume}}</td>
-  </ng-container>
+    <ng-container matColumnDef="Filled">
+      <th mat-header-cell *matHeaderCellDef> Filled</th>
+      <td mat-cell *matCellDef="let order">{{ order.originalVolume - order.volume }}</td>
+    </ng-container>
 
-  <ng-container matColumnDef="Left">
-    <th mat-header-cell *matHeaderCellDef> Left </th>
-    <td mat-cell *matCellDef="let order">{{order.volume}}</td>
-  </ng-container>
+    <ng-container matColumnDef="Left">
+      <th mat-header-cell *matHeaderCellDef> Left</th>
+      <td mat-cell *matCellDef="let order">{{ order.volume }}</td>
+    </ng-container>
 
-  <ng-container matColumnDef="Actions">
-    <th mat-header-cell *matHeaderCellDef> Actions </th>
-    <td mat-cell *matCellDef="let order">
-      <button mat-stroked-button (click)="cancelOrder(order.uuid)"
-              [disabled]="!isActive(order)"
-              style="font-size: 1.3em; width: 1em! important;min-width: unset!important;">&times;
-      </button>
-    </td>
-  </ng-container>
+    <ng-container matColumnDef="Actions">
+      <th mat-header-cell *matHeaderCellDef> Actions</th>
+      <td mat-cell *matCellDef="let order">
+        <button mat-stroked-button (click)="cancelOrder(order.uuid)"
+                [disabled]="!isActive(order)"
+                style="font-size: 1.3em; width: 1em! important;min-width: unset!important;">&times;
+        </button>
+      </td>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row [class]="getOrderTypeClass(order)" *matRowDef="let order; columns: displayedColumns;" ></tr>
-</table>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+    <tr mat-row [class]="getOrderTypeClass(order)" *matRowDef="let order; columns: displayedColumns;"></tr>
+  </table>
+</div>
