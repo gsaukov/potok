@@ -33,7 +33,7 @@ export class PositionsComponent {
   // }
 
   isActive(position:Position) {
-    return false;
+    return position.volume > 0;
   }
 
   closePosition(position:Position) {
