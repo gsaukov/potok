@@ -2,6 +2,14 @@
   width: 100%;
   border: 1px solid #a1afc3 !important;
   border-radius: 10px !important;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+tr {
+  height: 3.5em;
 }
 
 .short-order {
