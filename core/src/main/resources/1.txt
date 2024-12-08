@@ -1,0 +1,20 @@
+HttpObjectAggregator$AggregatedFullHttpRequest(decodeResult: success, version: HTTP/1.1, content: CompositeByteBuf(ridx: 0, widx: 0, cap: 0, components=0))
+GET /socket.io/?SESSIONID=NGZhMWE0OGEtOTdiZS00MjEyLWJhNTYtMDcwOTZiNGY1Y2Ji&EIO=4&transport=websocket HTTP/1.1
+Host: localhost:9092
+Connection: Upgrade
+Pragma: no-cache
+Cache-Control: no-cache
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Upgrade: websocket
+Origin: http://localhost:4200
+Sec-WebSocket-Version: 13
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: en-GB,en-US;q=0.9,en;q=0.8,ru;q=0.7
+Cookie: luigiCookie=true
+Sec-WebSocket-Key: ZnMNj78hgRsMjSY5iaSaUQ==
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+content-length: 0
+
+
+
+TextWebSocketFrame(data: CompositeByteBuf(ridx: 0, widx: 1, cap: 1, components=1))
