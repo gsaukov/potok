@@ -1,5 +1,5 @@
 <div class="table-container">
-  <table mat-table [dataSource]="dataSource">
+  <table mat-table [dataSource]="dataSource.data | slice: lowValue : highValue">
     <ng-container matColumnDef="UUID">
       <th mat-header-cell *matHeaderCellDef> Position ID</th>
       <td mat-cell *matCellDef="let position"> {{ position.uuid }}</td>
