@@ -4,7 +4,6 @@ import {MatTableDataSource, MatTableModule,  } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import {SocketService} from '../../../services/socket.service';
-import {TEST_ORDERS} from './test.orders';
 import { SlicePipe } from '@angular/common';
 
 @Component({
@@ -22,7 +21,6 @@ export class OrdersComponent {
   highValue = 5;
 
   constructor(private socketService: SocketService, private changeDetector: ChangeDetectorRef) {
-    this.orders = TEST_ORDERS
     this.dataSource.data = this.orders
     this.socketService.listenOrderConfirm().subscribe(o => {
         this.orders.push(o)
