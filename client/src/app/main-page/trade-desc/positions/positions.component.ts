@@ -3,7 +3,6 @@ import {MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import {SocketService} from '../../../services/socket.service';
 import {Position} from '../../../services/socket.schema';
-import {TEST_POSITIONS} from './test.positions';
 import {MatPaginator, PageEvent } from '@angular/material/paginator';
 import { SlicePipe } from '@angular/common';
 
@@ -16,25 +15,24 @@ import { SlicePipe } from '@angular/common';
 })
 export class PositionsComponent {
 
-  positions: Position[] = []
+  positions: Map<string, Position> = new Map()
   dataSource = new MatTableDataSource<Position>();
   displayedColumns: string[] = ['UUID', 'Symbol', 'Route', 'Quantity', 'Wap', 'Actions'];
   lowValue = 0;
   highValue = 5;
 
   constructor(private socketService:SocketService) {
-    this.positions = TEST_POSITIONS
-    this.dataSource.data = this.positions
+    this.dataSource.data = Array.from(this.positions.values())
     this.socketService.listenPositionNotification().subscribe(p => {
-      this.positions.push(p)
-      this.dataSource.data = this.positions
+      this.applyPosition(p)
+      this.dataSource.data = Array.from(this.positions.values())
     })
   }
 
-  // applyExecution(execution: Execution) {
-  //   const order:OrderConfirmation = this.getOrderById(execution.orderUuid);
-  //   order.volume = execution.orderLeftQuantity;
-  // }
+  applyPosition(position: Position) {
+    //Potential issue should order position change by size. In case position update coming in the wrong order.
+    this.positions.set(position.uuid, position);
+  }
 
   isActive(position:Position) {
     return position.volume > 0;
