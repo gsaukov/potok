@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Component } from '@angular/core';
-import {CancelOrder, OrderConfirmation} from '../../../services/socket.schema';
+import {CancelOrder, Execution, OrderConfirmation, Position} from '../../../services/socket.schema';
 import {MatTableDataSource, MatTableModule,  } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,18 +14,41 @@ import { SlicePipe } from '@angular/common';
   styleUrl: './orders.component.scss'
 })
 export class OrdersComponent {
-  orders: OrderConfirmation[] = []
+  orders: Map<string, OrderConfirmation> = new Map()
   dataSource = new MatTableDataSource<OrderConfirmation>();
   displayedColumns: string[] = ['UUID', 'Symbol', 'Route', 'Price', 'Quantity', 'Filled', 'Left', 'Actions'];
   lowValue = 0;
   highValue = 5;
 
   constructor(private socketService: SocketService, private changeDetector: ChangeDetectorRef) {
-    this.dataSource.data = this.orders
+    this.dataSource.data = Array.from(this.orders.values())
     this.socketService.listenOrderConfirm().subscribe(o => {
-        this.orders.push(o)
-        this.dataSource.data = this.orders
+        this.orders.set(o.uuid, o)
+        this.dataSource.data = Array.from(this.orders.values())
       })
+    this.socketService.listenExecution().subscribe(e => {
+      this.applyExecution(e)
+    })
+    // TODO: listen canceled order confirmation
+    // {
+    //   account:"TEST_ACCOUNT_ID"
+    //   active:false
+    //   blockedPrice:81
+    //   originalVolume:50000
+    //   route:"SHORT"
+    //   symbol:"JBZR"
+    //   timestamp:1733779206930
+    //   uuid:"c7655e15-665a-4b53-a3fd-5ac1097ad2c8"
+    //   val:68
+    //   volume:16540
+    // }
+  }
+
+  applyExecution(execution: Execution) {
+    //Potential issue should order position change by size. In case position update coming in the wrong order.
+    const order = this.orders.get(execution.orderUuid)!
+    order.volume = execution.orderLeftQuantity
+    this.orders.set(order.uuid, order);
   }
 
   cancelOrder(uuid:string) {
@@ -42,10 +65,6 @@ export class OrdersComponent {
 
   isActive(order: OrderConfirmation){
     return order.active && order.volume > 0
-  }
-
-  getOrderById(uuid:string):OrderConfirmation {
-    return this.orders.find(e => e.uuid === uuid)!
   }
 
   public getPaginatorData(event: PageEvent): PageEvent {
