@@ -73,6 +73,14 @@ export class SocketService {
     });
   }
 
+  listenOrderCancel(): Observable<OrderConfirmation> {
+    return new Observable((subscriber) => {
+      this.socket.on('canceledOrder', (data: OrderConfirmation) => {
+        subscriber.next(data);
+      });
+    });
+  }
+
   listenExecution(): Observable<Execution> {
     return new Observable((subscriber) => {
       this.socket.on('execution', (data: Execution) => {
