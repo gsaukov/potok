@@ -28,26 +28,22 @@ export class OrdersComponent {
       })
     this.socketService.listenExecution().subscribe(e => {
       this.applyExecution(e)
+      this.dataSource.data = Array.from(this.orders.values())
     })
-    // TODO: listen canceled order confirmation
-    // {
-    //   account:"TEST_ACCOUNT_ID"
-    //   active:false
-    //   blockedPrice:81
-    //   originalVolume:50000
-    //   route:"SHORT"
-    //   symbol:"JBZR"
-    //   timestamp:1733779206930
-    //   uuid:"c7655e15-665a-4b53-a3fd-5ac1097ad2c8"
-    //   val:68
-    //   volume:16540
-    // }
+    this.socketService.listenOrderCancel().subscribe(o => {
+      this.applyOrderCancel(o)
+      this.dataSource.data = Array.from(this.orders.values())
+    })
   }
 
   applyExecution(execution: Execution) {
     //Potential issue should order position change by size. In case position update coming in the wrong order.
     const order = this.orders.get(execution.orderUuid)!
     order.volume = execution.orderLeftQuantity
+    this.orders.set(order.uuid, order);
+  }
+
+  applyOrderCancel(order: OrderConfirmation) {
     this.orders.set(order.uuid, order);
   }
 
