@@ -46,7 +46,7 @@ export class PositionsComponent {
     if(position.route === 'BUY') {
       return position.volume > 0?'long-position':'closed-long-position'
     } else {
-      return position.volume < 0?'short-position':'closed-short-position'
+      return position.volume > 0?'short-position':'closed-short-position'
     }
   }
 
@@ -54,5 +54,9 @@ export class PositionsComponent {
     this.lowValue = event.pageIndex * event.pageSize;
     this.highValue = this.lowValue + event.pageSize;
     return event;
+  }
+
+  getVolume(volume: number):number {
+    return Math.abs(volume);
   }
 }
