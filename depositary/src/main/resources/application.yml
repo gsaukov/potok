@@ -1,0 +1,67 @@
+####### OVERRIDE OPTION ########
+# override via WM option: -Dmysql.host=localhost
+
+param.discovery.host: discovery
+param.kafka.address: kafka:9092 #localhost:19092
+param.db.host: oracledb
+
+#######
+
+spring:
+  application:
+    name: depositary
+
+  datasource:
+    url: jdbc:oracle:thin:@${param.db.host}:1521:oracledb
+    username: depositary
+    password: password
+    driver-class-name: oracle.jdbc.OracleDriver
+
+    hikari:
+      minimumIdle: 5
+      maximumPoolSize: 20
+      idleTimeout: 30000
+      maxLifetime: 2000000
+      connectionTimeout: 30000
+
+  jpa.properties.hibernate.jdbc.batch_size: 1000
+  jpa.properties.hibernate.order_inserts: true
+  jpa.properties.hibernate.order_updates: true
+  jpa.properties.hibernate.batch_versioned_data: true
+  jpa.properties.hibernate.generate_statistics: true
+
+  liquibase:
+    change-log: classpath:db/changelog-master.xml
+
+server:
+  port: 8030
+  error.whitelabel.enabled: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+          include: "*"
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 4
+    leaseExpirationDurationInSeconds: 10
+  client:
+    registryFetchIntervalSeconds: 3
+    shouldDisableDelta: true
+    serviceUrl:
+      defaultZone: http://${param.discovery.host}:8761/eureka/
+
+kafka:
+  clusterAddress: ${param.kafka.address}
+  topic.executions: executions
+  topic.deposits: deposits
+  acknowledgement: all # 0 - none; 1 - leader; all - leader and replicas.
+
+depositary:
+  executorsNumber: 4
+
+#logging.level.org.springframework: DEBUG
+#logging.level.org.apache.kafka: DEBUG
+#logging.level.org.hibernate: TRACE
