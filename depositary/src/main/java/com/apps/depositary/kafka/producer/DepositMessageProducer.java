@@ -6,8 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Component;
-import org.springframework.util.concurrent.ListenableFuture;
-import org.springframework.util.concurrent.ListenableFutureCallback;
+import java.util.concurrent.CompletableFuture;
 
 @Component
 public class DepositMessageProducer {
@@ -19,19 +18,12 @@ public class DepositMessageProducer {
     private KafkaTemplate<String, DepositMessage> depositMessageKafkaTemplate;
 
     public void sendMessage(DepositMessage message) {
-
-        ListenableFuture<SendResult<String, DepositMessage>> future = depositMessageKafkaTemplate.send(topicName, message);
-
-        future.addCallback(new ListenableFutureCallback<SendResult<String, DepositMessage>>() {
-
-            @Override
-            public void onSuccess(SendResult<String, DepositMessage> result) {
+        CompletableFuture<SendResult<String, DepositMessage>> future = depositMessageKafkaTemplate.send(topicName, message);
+        future.whenComplete((result, ex) -> {
+            if (ex == null) {
                 System.out.println("Sent message=[" + message + "] with offset=[" + result.getRecordMetadata()
                         .offset() + "]");
-            }
-
-            @Override
-            public void onFailure(Throwable ex) {
+            } else {
                 System.out.println("Unable to send message=[" + message + "] due to : " + ex.getMessage());
             }
         });

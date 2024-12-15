@@ -1,9 +1,6 @@
 package com.apps.depositary.service;
 
-import javax.persistence.*;
-import java.util.Date;
 import java.util.UUID;
-
 
 public class SafeExecution {
 

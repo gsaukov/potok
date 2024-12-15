@@ -42,7 +42,7 @@ public class ExecutionMessageConsumer implements ConsumerSeekAware {
 
     @KafkaListener(topics = "${kafka.topic.executions}", groupId = GROUPID_DEPOSITARY, containerFactory = "depositKafkaListenerContainerFactory")
     public void listenGroupDeposit(@Payload ExecutionMessage message,
-                                   @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition,
+                                   @Header(KafkaHeaders.RECEIVED_PARTITION) int partition,
                                    @Header(KafkaHeaders.OFFSET) int offset,
                                    Acknowledgment acknowledgment) {
 
