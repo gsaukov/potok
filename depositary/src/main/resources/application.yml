@@ -43,16 +43,6 @@ management:
       exposure:
           include: "*"
 
-eureka:
-  instance:
-    leaseRenewalIntervalInSeconds: 4
-    leaseExpirationDurationInSeconds: 10
-  client:
-    registryFetchIntervalSeconds: 3
-    shouldDisableDelta: true
-    serviceUrl:
-      defaultZone: http://${param.discovery.host}:8761/eureka/
-
 kafka:
   clusterAddress: ${param.kafka.address}
   topic.executions: executions
