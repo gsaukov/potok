@@ -1,9 +1,9 @@
 package com.apps.depositary.persistance.entity;
 
 import com.apps.depositary.service.Route;
-import org.hibernate.annotations.Type;
+import org.hibernate.annotations.JdbcTypeCode;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.Date;
@@ -15,7 +15,7 @@ import java.util.UUID;
 public class Deposit {
 
     @Id
-    @Type(type="uuid-char")
+    @JdbcTypeCode(java.sql.Types.VARCHAR)
     @Column(name = "UUID")
     private UUID uuid;
 

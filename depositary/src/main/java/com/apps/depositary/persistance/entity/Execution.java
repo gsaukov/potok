@@ -1,9 +1,9 @@
 package com.apps.depositary.persistance.entity;
 
 import com.apps.depositary.service.Route;
-import org.hibernate.annotations.Type;
+import org.hibernate.annotations.JdbcTypeCode;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
@@ -13,15 +13,15 @@ import java.util.UUID;
 public class Execution {
 
     @Id
-    @Type(type="uuid-char")
+    @JdbcTypeCode(java.sql.Types.VARCHAR)
     @Column(name = "UUID")
     private UUID uuid;
 
-    @Type(type="uuid-char")
+    @JdbcTypeCode(java.sql.Types.VARCHAR)
     @Column(name = "COUNTER_EXECUTION_UUID")
     private UUID counterExecutionUuid;
 
-    @Type(type="uuid-char")
+    @JdbcTypeCode(java.sql.Types.VARCHAR)
     @Column(name = "ORDER_UUID")
     private UUID orderUuid;
 
@@ -50,7 +50,7 @@ public class Execution {
     @Column(name = "FILLED")
     private boolean filled;
 
-    @Type(type="uuid-char")
+    @JdbcTypeCode(java.sql.Types.VARCHAR)
     @Column(name = "DEPOSIT_UUID")
     private UUID depositId;
 
