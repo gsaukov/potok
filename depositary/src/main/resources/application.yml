@@ -1,12 +1,3 @@
-####### OVERRIDE OPTION ########
-# override via WM option: -Dmysql.host=localhost
-
-param.discovery.host: discovery
-param.kafka.address: kafka:9092 #localhost:19092
-param.db.host: oracledb
-
-#######
-
 spring:
   application:
     name: depositary
