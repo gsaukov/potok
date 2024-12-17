@@ -3,10 +3,10 @@ spring:
     name: depositary
 
   datasource:
-    url: jdbc:oracle:thin:@${param.db.host}:1521:oracledb
+    url: jdbc:postgresql://depositary:5432/depositary
     username: depositary
     password: password
-    driver-class-name: oracle.jdbc.OracleDriver
+    driver-class-name: org.postgresql.Driver
 
     hikari:
       minimumIdle: 5
