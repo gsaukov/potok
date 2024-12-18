@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+
+  depositary-db:
+    container_name: depositary-db
+    image: postgres:14rc1-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: depositary
+      POSTGRES_USER: depositary
+      POSTGRES_PASSWORD: password
+      PGDATA: /data/postgres
