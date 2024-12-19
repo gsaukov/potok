@@ -23,6 +23,7 @@ dependencies {
     implementation "org.springframework.kafka:spring-kafka"
     implementation "com.oracle.ojdbc:ojdbc8:19.3.0.0"
     implementation 'com.google.guava:guava:29.0-jre'
+    implementation "org.postgresql:postgresql"
 
     runtimeOnly "org.liquibase:liquibase-core:4.30.0"
 }
