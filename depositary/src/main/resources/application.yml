@@ -3,7 +3,7 @@ spring:
     name: depositary
 
   datasource:
-    url: jdbc:postgresql://depositary:5432/depositary
+    url: ${DEPOSITARY_DB:jdbc:postgresql://localhost:5432/depositary}
     username: depositary
     password: password
     driver-class-name: org.postgresql.Driver
@@ -35,7 +35,7 @@ management:
           include: "*"
 
 kafka:
-  clusterAddress: ${param.kafka.address}
+  clusterAddress: ${POTOK_KAFKA_CLUSTER:localhost:19092}
   topic.executions: executions
   topic.deposits: deposits
   acknowledgement: all # 0 - none; 1 - leader; all - leader and replicas.
