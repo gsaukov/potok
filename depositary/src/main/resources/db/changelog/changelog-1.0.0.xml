@@ -35,7 +35,7 @@
             <column name="QUANTITY" type="INTEGER">
                 <constraints nullable="true"/>
             </column>
-            <column name="FILLED" type="NUMBER(1)">
+            <column name="FILLED" type="BOOLEAN">
                 <constraints nullable="false"/>
             </column>
             <column name="DEPOSIT_UUID" type="VARCHAR2(64)">
@@ -76,7 +76,7 @@
             <column name="QUANTITY" type="INTEGER">
                 <constraints nullable="false"/>
             </column>
-            <column name="CLOSED" type="NUMBER(1)">
+            <column name="CLOSED" type="BOOLEAN">
                 <constraints nullable="false"/>
             </column>
             <column name="VERSION" type="BIGINT"/>
