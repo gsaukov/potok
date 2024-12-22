@@ -12,15 +12,7 @@ import java.util.UUID;
 @Entity
 @Access(AccessType.FIELD)
 @Table(name = "DEPOSIT")
-public class Deposit {
-
-    @Id
-    @JdbcTypeCode(java.sql.Types.VARCHAR)
-    @Column(name = "UUID")
-    private UUID uuid;
-
-    @Column(name = "CREATED_AT")
-    private Date timestamp;
+public class Deposit extends BaseEntity{
 
     @Column(name = "SYMBOL")
     private String symbol;
@@ -47,22 +39,6 @@ public class Deposit {
     @Version
     @Column(name = "VERSION")
     private Long version;
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
-
-    public Date getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
-    }
 
     public String getSymbol() {
         return symbol;

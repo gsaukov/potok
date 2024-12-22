@@ -1,8 +1,11 @@
 package com.apps.depositary.persistance.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.UUID;
 
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
@@ -10,47 +13,35 @@ public abstract class BaseEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "ID")
-    private String id;
+    @JdbcTypeCode(java.sql.Types.VARCHAR)
+    @Column(name = "UUID")
+    private UUID uuid;
+
+    @Column(name = "CREATED_AT")
+    private Date timestamp;
 
     @Version
     @Column(name = "VERSION")
     private Long version;
 
-    @Column(name = "CREATED_AT")
-    private LocalDateTime createdAt;
+    public UUID getUuid() {
+        return uuid;
+    }
 
-    @Column(name = "CREATED_BY")
-    private String createdBy;
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
 
-    @Column(name = "LAST_UPDATED")
-    private LocalDateTime lastUpdated;
+    public Date getTimestamp() {
+        return timestamp;
+    }
 
-    @Column(name = "UPDATED_BY")
-    private String updatedBy;
-
-    public String getId() {
-        return id;
+    public void setTimestamp(Date timestamp) {
+        this.timestamp = timestamp;
     }
 
     public Long getVersion() {
         return version;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public LocalDateTime getLastUpdated() {
-        return lastUpdated;
-    }
-
-    public String getUpdatedBy() {
-        return updatedBy;
     }
 
     @Override
@@ -62,7 +53,6 @@ public abstract class BaseEntity implements Serializable {
     public int hashCode() {
         throw new IllegalArgumentException("Method 'hashCode' must be overridden from downstream implementation.");
     }
-
 
 }
 
