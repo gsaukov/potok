@@ -10,12 +10,7 @@ import java.util.UUID;
 @Entity
 @Access(AccessType.FIELD)
 @Table(name = "EXECUTION")
-public class Execution {
-
-    @Id
-    @JdbcTypeCode(java.sql.Types.VARCHAR)
-    @Column(name = "UUID")
-    private UUID uuid;
+public class Execution extends BaseEntity {
 
     @JdbcTypeCode(java.sql.Types.VARCHAR)
     @Column(name = "COUNTER_EXECUTION_UUID")
@@ -24,9 +19,6 @@ public class Execution {
     @JdbcTypeCode(java.sql.Types.VARCHAR)
     @Column(name = "ORDER_UUID")
     private UUID orderUuid;
-
-    @Column(name = "CREATED_AT")
-    private Date timestamp;
 
     @Column(name = "SYMBOL")
     private String symbol;
@@ -54,14 +46,6 @@ public class Execution {
     @Column(name = "DEPOSIT_UUID")
     private UUID depositId;
 
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
-
     public UUID getCounterExecutionUuid() {
         return counterExecutionUuid;
     }
@@ -76,14 +60,6 @@ public class Execution {
 
     public void setOrderUuid(UUID orderUuid) {
         this.orderUuid = orderUuid;
-    }
-
-    public Date getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
     }
 
     public String getSymbol() {
