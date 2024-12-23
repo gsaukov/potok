@@ -36,10 +36,6 @@ public class Deposit extends BaseEntity{
     @Column(name = "CLOSED")
     private boolean closed;
 
-    @Version
-    @Column(name = "VERSION")
-    private Long version;
-
     public String getSymbol() {
         return symbol;
     }
