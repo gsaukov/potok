@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
+import static java.time.LocalDateTime.now;
+
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
 
@@ -19,6 +21,9 @@ public abstract class BaseEntity implements Serializable {
 
     @Column(name = "CREATED_AT")
     private Date timestamp;
+
+    @Column(name = "UPDATED_AT")
+    private Date updatedAt;
 
     @Version
     @Column(name = "VERSION")
@@ -40,8 +45,21 @@ public abstract class BaseEntity implements Serializable {
         this.timestamp = timestamp;
     }
 
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     public Long getVersion() {
         return version;
+    }
+
+    @PreUpdate
+    private void preUpdate() {
+        updatedAt = new Date();
     }
 
     @Override
