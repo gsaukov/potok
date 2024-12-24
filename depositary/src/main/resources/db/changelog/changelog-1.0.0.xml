@@ -17,6 +17,9 @@
             <column name="CREATED_AT" type="TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
+            <column name="UPDATED_AT" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
             <column name="SYMBOL" type="VARCHAR2(32)">
                 <constraints nullable="false"/>
             </column>
@@ -56,6 +59,9 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="CREATED_AT" type="TIMESTAMP">
+                <constraints nullable="false"/>
+            </column>
+            <column name="UPDATED_AT" type="TIMESTAMP">
                 <constraints nullable="false"/>
             </column>
             <column name="SYMBOL" type="VARCHAR2(32)">
