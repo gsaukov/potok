@@ -1,6 +1,5 @@
 package com.apps.depositary.kafka.config;
 
-
 import com.apps.depositary.kafka.messaging.DepositMessage;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
