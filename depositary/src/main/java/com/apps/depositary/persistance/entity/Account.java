@@ -1,6 +1,8 @@
 package com.apps.depositary.persistance.entity;
 
 import jakarta.persistence.*;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -11,6 +13,11 @@ public class Account extends BaseEntity {
     @Column(name = "ACCOUNT_ID")
     private String accountId;
 
+    @Column(name = "BALANCE")
+    private BigDecimal balance;
+
+    @JoinColumn(name = "ACCOUNT_ID", referencedColumnName="ACCOUNT_ID")
+    @OneToMany(cascade = CascadeType.DETACH, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<Deposit> deposits;
 
     public String getAccountId() {
@@ -21,6 +28,13 @@ public class Account extends BaseEntity {
         this.accountId = accountId;
     }
 
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
 
     public List<Deposit> getDeposits() {
         return deposits;
