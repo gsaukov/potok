@@ -7,8 +7,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
-import static java.time.LocalDateTime.now;
-
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {
 
@@ -55,6 +53,11 @@ public abstract class BaseEntity implements Serializable {
 
     public Long getVersion() {
         return version;
+    }
+
+    @PrePersist
+    private void prePersist() {
+        updatedAt = new Date();
     }
 
     @PreUpdate
