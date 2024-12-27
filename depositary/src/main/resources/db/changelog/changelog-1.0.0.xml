@@ -44,6 +44,7 @@
             <column name="DEPOSIT_UUID" type="VARCHAR2(64)">
                 <constraints nullable="false"/>
             </column>
+            <column name="VERSION" type="BIGINT"/>
         </createTable>
         <createIndex tableName="EXECUTION" indexName="IDX_EXC_DEP" unique="false">
             <column name="DEPOSIT_UUID"/>
