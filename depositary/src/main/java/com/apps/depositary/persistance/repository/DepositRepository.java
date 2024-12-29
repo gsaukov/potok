@@ -16,6 +16,8 @@ public interface DepositRepository extends JpaRepository<Deposit, UUID> {
 
     List<Deposit> findByAccountId(String accountId);
 
+    List<Deposit> findBySymbol(String symbol);
+
     @Modifying
     @Query("update Deposit d set d.fillPrice = ?1, d.quantity = ?2 where d.uuid = ?3")
     void updateDeposit(BigDecimal fillPrice, Integer quantity, UUID id);
