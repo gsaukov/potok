@@ -1,4 +1,4 @@
-package com.apps.depositary.service;
+package com.apps.depositary.service.deposit;
 
 import com.google.common.util.concurrent.AtomicDouble;
 
@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 
-import static com.apps.depositary.service.Route.SELL;
+import static com.apps.depositary.service.deposit.Route.SELL;
 
 public class SafeDeposit {
 

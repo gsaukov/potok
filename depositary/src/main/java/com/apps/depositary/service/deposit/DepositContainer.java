@@ -1,4 +1,4 @@
-package com.apps.depositary.service;
+package com.apps.depositary.service.deposit;
 
 import com.apps.depositary.persistance.entity.Deposit;
 import com.apps.depositary.persistance.entity.Execution;

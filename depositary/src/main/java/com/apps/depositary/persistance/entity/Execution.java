@@ -1,10 +1,10 @@
 package com.apps.depositary.persistance.entity;
 
-import com.apps.depositary.service.Route;
+import com.apps.depositary.service.deposit.Route;
 import org.hibernate.annotations.JdbcTypeCode;
 
 import jakarta.persistence.*;
-import java.util.Date;
+
 import java.util.UUID;
 
 @Entity

@@ -1,8 +1,9 @@
-package com.apps.depositary.service;
+package com.apps.depositary.service.deposit;
 
 import com.apps.depositary.persistance.entity.Deposit;
 import com.apps.depositary.persistance.repository.DepositRepository;
 import com.apps.depositary.persistance.repository.DepositUpdater;
+import com.apps.depositary.service.AbstractDepositaryWorker;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;

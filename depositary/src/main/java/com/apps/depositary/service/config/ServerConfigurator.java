@@ -1,12 +1,11 @@
 package com.apps.depositary.service.config;
 
-import com.apps.depositary.service.DepositExecutor;
+import com.apps.depositary.service.deposit.DepositExecutor;
 
-import com.apps.depositary.service.DepositWorker;
+import com.apps.depositary.service.deposit.DepositWorker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;

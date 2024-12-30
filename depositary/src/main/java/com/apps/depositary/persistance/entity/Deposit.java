@@ -1,13 +1,10 @@
 package com.apps.depositary.persistance.entity;
 
-import com.apps.depositary.service.Route;
-import org.hibernate.annotations.JdbcTypeCode;
+import com.apps.depositary.service.deposit.Route;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.math.MathContext;
-import java.util.Date;
-import java.util.UUID;
 
 @Entity
 @Access(AccessType.FIELD)

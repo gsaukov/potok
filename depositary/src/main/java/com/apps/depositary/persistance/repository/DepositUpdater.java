@@ -1,6 +1,6 @@
 package com.apps.depositary.persistance.repository;
 
-import com.apps.depositary.service.SafeDeposit;
+import com.apps.depositary.service.deposit.SafeDeposit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

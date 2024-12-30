@@ -1,4 +1,4 @@
-package com.apps.depositary.service;
+package com.apps.depositary.service.deposit;
 
 import java.util.UUID;
 

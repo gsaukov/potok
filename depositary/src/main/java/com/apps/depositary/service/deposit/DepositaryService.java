@@ -1,10 +1,9 @@
-package com.apps.depositary.service;
+package com.apps.depositary.service.deposit;
 
 import com.apps.depositary.persistance.entity.Execution;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 //ThreadSafe
