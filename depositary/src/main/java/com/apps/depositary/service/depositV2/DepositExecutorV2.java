@@ -1,8 +1,6 @@
 package com.apps.depositary.service.depositV2;
 
 import com.apps.depositary.persistance.entity.Execution;
-import com.apps.depositary.service.DepositWorker;
-import com.apps.depositary.service.SafeDeposit;
 import com.google.common.hash.HashCode;
 import com.google.common.hash.Hashing;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.atomic.AtomicBoolean;
