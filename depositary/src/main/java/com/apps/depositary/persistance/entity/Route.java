@@ -1,4 +1,4 @@
-package com.apps.depositary.service.deposit;
+package com.apps.depositary.persistance.entity;
 
 public enum Route {
     BUY,

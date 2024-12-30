@@ -1,5 +1,6 @@
 package com.apps.depositary.service.deposit;
 
+import com.apps.depositary.persistance.entity.Route;
 import com.google.common.util.concurrent.AtomicDouble;
 
 import java.util.Date;
@@ -9,7 +10,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 
-import static com.apps.depositary.service.deposit.Route.SELL;
+import static com.apps.depositary.persistance.entity.Route.SELL;
 
 public class SafeDeposit {
 

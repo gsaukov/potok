@@ -1,7 +1,5 @@
 package com.apps.depositary.persistance.entity;
 
-import com.apps.depositary.service.deposit.Route;
-
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.math.MathContext;

@@ -4,7 +4,7 @@ import com.apps.depositary.kafka.messaging.ExecutionMessage;
 import com.apps.depositary.persistance.entity.Execution;
 import com.apps.depositary.persistance.repository.ExecutionRepository;
 import com.apps.depositary.service.deposit.DepositaryService;
-import com.apps.depositary.service.deposit.Route;
+import com.apps.depositary.persistance.entity.Route;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;

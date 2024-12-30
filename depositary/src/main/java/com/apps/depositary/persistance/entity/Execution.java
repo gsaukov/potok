@@ -1,6 +1,5 @@
 package com.apps.depositary.persistance.entity;
 
-import com.apps.depositary.service.deposit.Route;
 import org.hibernate.annotations.JdbcTypeCode;
 
 import jakarta.persistence.*;
