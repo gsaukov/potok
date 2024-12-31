@@ -7,6 +7,8 @@ import com.apps.depositary.service.AbstractDepositaryWorker;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.UUID;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class DepositWorkerV2 extends AbstractDepositaryWorker {
@@ -34,6 +36,14 @@ public class DepositWorkerV2 extends AbstractDepositaryWorker {
 
     private Deposit toNewDeposit(Execution execution) {
         Deposit newDeposit = new Deposit();
+        newDeposit.setUuid(UUID.randomUUID());
+        newDeposit.setTimestamp(execution.getTimestamp());
+        newDeposit.setSymbol(execution.getSymbol());
+        newDeposit.setAccountId(execution.getAccountId());
+        newDeposit.setRoute(execution.getRoute());
+        newDeposit.setFillPrice(execution.getFillPrice().doubleValue());
+        newDeposit.setBlockedPrice(execution.getBlockedPrice());
+        newDeposit.setQuantity(execution.getQuantity());
         return newDeposit;
     }
 
