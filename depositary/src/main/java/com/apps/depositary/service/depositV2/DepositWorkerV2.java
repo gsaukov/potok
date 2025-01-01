@@ -8,6 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
@@ -28,7 +29,9 @@ public class DepositWorkerV2 extends AbstractDepositaryWorker {
     public void runDepositaryWorker() {
         Execution execution = eventQueue.poll();
         if(execution != null){
-            //TODO logic here.
+            Optional<Deposit> existingDeposit = depositRepository.findByAccountIdAndSymbolAndRouteAndClosed(execution.getAccountId(),
+                    execution.getSymbol(), execution.getRoute(), false);
+            Deposit deposit = existingDeposit.orElseGet(() -> toNewDeposit(execution));
         } else {
             speedControl();
         }
