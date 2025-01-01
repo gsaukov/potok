@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
@@ -19,7 +20,7 @@ public interface DepositRepository extends JpaRepository<Deposit, UUID> {
 
     List<Deposit> findBySymbol(String symbol);
 
-    List<Deposit> findByAccountIdAndSymbolAndRouteAndClosed(String accountId, String symbol, Route route, boolean isClosed);
+    Optional<Deposit> findByAccountIdAndSymbolAndRouteAndClosed(String accountId, String symbol, Route route, boolean isClosed);
 
     @Modifying
     @Query("update Deposit d set d.fillPrice = ?1, d.quantity = ?2 where d.uuid = ?3")
