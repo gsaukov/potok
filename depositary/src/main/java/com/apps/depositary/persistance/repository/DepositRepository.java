@@ -2,6 +2,7 @@ package com.apps.depositary.persistance.repository;
 
 
 import com.apps.depositary.persistance.entity.Deposit;
+import com.apps.depositary.persistance.entity.Route;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,6 +18,8 @@ public interface DepositRepository extends JpaRepository<Deposit, UUID> {
     List<Deposit> findByAccountId(String accountId);
 
     List<Deposit> findBySymbol(String symbol);
+
+    List<Deposit> findByAccountIdAndSymbolAndRouteAndClosed(String accountId, String symbol, Route route, boolean isClosed);
 
     @Modifying
     @Query("update Deposit d set d.fillPrice = ?1, d.quantity = ?2 where d.uuid = ?3")
