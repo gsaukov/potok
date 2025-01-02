@@ -8,6 +8,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentLinkedDeque;
@@ -31,10 +32,23 @@ public class DepositWorkerV2 extends AbstractDepositaryWorker {
         if(execution != null){
             Optional<Deposit> existingDeposit = depositRepository.findByAccountIdAndSymbolAndRouteAndClosed(execution.getAccountId(),
                     execution.getSymbol(), execution.getRoute(), false);
-            Deposit deposit = existingDeposit.orElseGet(() -> toNewDeposit(execution));
+            if (existingDeposit.isPresent()) {
+                addToDeposit(execution, existingDeposit.get());
+            } else {
+                newDeposit(execution);
+            }
         } else {
             speedControl();
         }
+    }
+
+    private void addToDeposit (Execution execution, Deposit deposit) {
+        Integer quantity = deposit.getQuantity() + execution.getQuantity();
+        depositRepository.updateDeposit(new BigDecimal(execution.getFillPrice()), quantity, deposit.getUuid());
+    }
+
+    private void newDeposit (Execution execution) {
+        depositRepository.save(toNewDeposit(execution));
     }
 
     private Deposit toNewDeposit(Execution execution) {
