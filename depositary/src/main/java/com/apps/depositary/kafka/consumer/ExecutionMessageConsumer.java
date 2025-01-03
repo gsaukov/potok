@@ -20,7 +20,8 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import static com.apps.depositary.kafka.config.KafkaConsumerConfig.GROUPID_DEPOSITARY;
 
-@Component
+//@Component
+@Deprecated() //Use ExecutionMessageConsumerV2
 public class ExecutionMessageConsumer implements ConsumerSeekAware {
 
     @Value("${spring.jpa.properties.hibernate.jdbc.batch_size}")
@@ -40,7 +41,7 @@ public class ExecutionMessageConsumer implements ConsumerSeekAware {
     @Autowired
     private DepositaryService depositaryService;
 
-    @KafkaListener(topics = "${kafka.topic.executions}", groupId = GROUPID_DEPOSITARY, containerFactory = "depositKafkaListenerContainerFactory")
+//    @KafkaListener(topics = "${kafka.topic.executions}", groupId = GROUPID_DEPOSITARY, containerFactory = "depositKafkaListenerContainerFactory")
     public void listenGroupDeposit(@Payload ExecutionMessage message,
                                    @Header(KafkaHeaders.RECEIVED_PARTITION) int partition,
                                    @Header(KafkaHeaders.OFFSET) int offset,
