@@ -1,8 +1,7 @@
 package com.apps.depositary.service.config;
 
-import com.apps.depositary.service.deposit.DepositExecutor;
-
-import com.apps.depositary.service.deposit.DepositWorker;
+import com.apps.depositary.service.depositV2.DepositExecutorV2;
+import com.apps.depositary.service.depositV2.DepositWorkerV2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +18,12 @@ public class ServerConfigurator implements ApplicationListener<ApplicationReadyE
     private Logger logger = LoggerFactory.getLogger(ServerConfigurator.class);
 
     @Autowired
-    private DepositExecutor executor;
+    private DepositExecutorV2 executor;
 
     @Bean
     @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    public DepositWorker depositWorker() {
-        return new DepositWorker();
+    public DepositWorkerV2 depositWorker() {
+        return new DepositWorkerV2();
     }
 
     @Override

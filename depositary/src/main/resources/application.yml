@@ -16,10 +16,10 @@ spring:
       connectionTimeout: 30000
 
   jpa.properties.hibernate.jdbc.batch_size: 1000
-  jpa.properties.hibernate.order_inserts: true
-  jpa.properties.hibernate.order_updates: true
-  jpa.properties.hibernate.batch_versioned_data: true
-  jpa.properties.hibernate.generate_statistics: true
+#  jpa.properties.hibernate.order_inserts: true
+#  jpa.properties.hibernate.order_updates: true
+#  jpa.properties.hibernate.batch_versioned_data: true
+#  jpa.properties.hibernate.generate_statistics: true
 
   liquibase:
     change-log: classpath:db/changelog-master.xml
