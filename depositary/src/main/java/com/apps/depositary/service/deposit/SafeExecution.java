@@ -4,6 +4,7 @@ import com.apps.depositary.persistance.entity.Route;
 
 import java.util.UUID;
 
+@Deprecated
 public class SafeExecution {
 
     private final UUID uuid;

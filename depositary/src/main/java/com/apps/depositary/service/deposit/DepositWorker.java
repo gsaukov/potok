@@ -14,6 +14,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.stream.Collectors;
 
+@Deprecated
 public class DepositWorker extends AbstractDepositaryWorker {
 
     private final Log logger = LogFactory.getLog(DepositWorker.class);

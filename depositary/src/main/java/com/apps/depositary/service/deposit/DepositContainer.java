@@ -7,6 +7,7 @@ import com.apps.depositary.persistance.entity.Route;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Deprecated
 public class DepositContainer {
 
     private final ConcurrentHashMap<Route, SafeDeposit> container;

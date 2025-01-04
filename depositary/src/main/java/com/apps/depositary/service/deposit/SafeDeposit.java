@@ -12,6 +12,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 import static com.apps.depositary.persistance.entity.Route.SELL;
 
+@Deprecated
 public class SafeDeposit {
 
     private final ReentrantLock lock;

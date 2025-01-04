@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.ConcurrentHashMap;
 
 //ThreadSafe
+@Deprecated
 @Service
 public class DepositaryService{
 
