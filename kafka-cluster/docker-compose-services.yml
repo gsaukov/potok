@@ -16,6 +16,7 @@ services:
     environment:
       # Required. Schema Registry will contact ZooKeeper to figure out how to connect
       # to the Kafka cluster.
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: kafka:9092
       SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: zookeeper:2181
       # Required. This is the hostname that Schema Registry will advertise in ZooKeeper.
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
@@ -244,3 +245,4 @@ services:
 
 networks:
   kafka-cluster:
+    name: kafka-cluster-network
