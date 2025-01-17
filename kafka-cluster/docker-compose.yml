@@ -43,9 +43,9 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_GROUP_MAX_SESSION_TIMEOUT_MS: 180000 #group.max.session.timeout.ms(default 30s)
-      KAFKA_CREATE_TOPICS:
+        # Create kafka topic using org.apache.kafka.clients.admin.NewTopic
         #topic name : number of partitions : number of replicas.
-        "executions:4:1,deposits:1:1"
+        #"executions:4:1,deposits:1:1"
 #    volumes:
 #      - kafka-data:/var/lib/kafka/data
     networks:
