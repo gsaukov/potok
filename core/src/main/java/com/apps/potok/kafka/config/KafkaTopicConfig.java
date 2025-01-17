@@ -42,6 +42,11 @@ public class KafkaTopicConfig {
         return new NewTopic(topicDeposits, 1, (short) 1);
     }
 
+    @Bean
+    public NewTopic executionsTopic() {
+        return new NewTopic(topicExecutions, 4, (short) 1);
+    }
+
     private Map<String, Object> getConfigs() {
         Map<String, Object> configs = new HashMap<>();
         configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, clusterAddress);

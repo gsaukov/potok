@@ -32,7 +32,7 @@ public class KafkaTopicConfig {
 
     @Bean
     public NewTopic executionsTopic() {
-        return new NewTopic(topicExecutions, 1, (short) 1);
+        return new NewTopic(topicExecutions, 4, (short) 1);
     }
 
     @Bean
